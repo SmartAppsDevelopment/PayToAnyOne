@@ -21,7 +21,7 @@ class PayNowViewModel @Inject constructor(
 
     companion object {
         private const val USER_ACCOUNT = "USER_ACCOUNT"
-        private const val USER_ACCOUNT_PURPOSE = "USER_ACCOUNT"
+        private const val USER_ACCOUNT_PURPOSE = "USER_ACCOUNT_PURPOSE"
     }
 
     var isContinueEnabled = MutableLiveData(false)
@@ -56,9 +56,9 @@ class PayNowViewModel @Inject constructor(
     }
     suspend fun getPurposeDataFromLocalDb() {
         uiUpdatesPurposeItem.emit(ResponseState.Loading())
-        repository.getAllTransPurposeList().collect {
-            ///currentTransPurpose.value=(it.get(0))
-            uiUpdatesPurposeItem.emit(ResponseState.Success(it))
+        repository.getAllTransPurposeList().collect {accountList->
+           currentTransPurpose.value=(accountList.get(0))
+            uiUpdatesPurposeItem.emit(ResponseState.Success(accountList))
         }
     }
 }

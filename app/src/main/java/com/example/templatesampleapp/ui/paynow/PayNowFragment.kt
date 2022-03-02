@@ -3,6 +3,9 @@ package com.example.templatesampleapp.ui.paynow
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
@@ -38,14 +41,19 @@ class PayNowFragment :
         binding.expandPurposeView.root.setOnClickListener {
             val bol = binding.isPurposeViewExpanded ?: false
             binding.isPurposeViewExpanded = !bol
-            binding.accountExpansion.visibility=View.GONE
+            binding.expandAccView.root.visibility= if(bol) View.VISIBLE else View.GONE
         }
         binding.expandAccView.root.setOnClickListener {
             val bol = binding.isAccViewExpanded ?: false
             binding.isAccViewExpanded = !bol
+          //  binding.expandPurposeView.root.visibility= if(bol) View.VISIBLE else View.GONE
+
         }
         viewModel.viewModelScope.launch {
             observeAccountChange()
+        }
+        lifecycleScope.launchWhenResumed {
+            observePurposeChagnes()
         }
         viewModel.isContinueEnabled.observe(viewLifecycleOwner) {
             showLog("yes its lock isEnabled=$it")
@@ -75,8 +83,13 @@ class PayNowFragment :
             binding.isAccViewExpanded = false
             binding.expandAccView.model = it
         }
+        viewModel.currentTransPurpose.observe(viewLifecycleOwner) {
+            binding.isPurposeViewExpanded = false
+            binding.expandPurposeView.model = it
+        }
+
+
         viewModel.getDataFromLocalDb()
-        viewModel.getPurposeDataFromLocalDb()
         viewModel.uiUpdates.collect { it ->
             when (it) {
                 is ResponseState.Error -> {
@@ -94,7 +107,11 @@ class PayNowFragment :
                 }
             }
         }
-        viewModel.uiUpdatesPurposeItem.collect { listItem ->
+
+    }
+    private suspend fun observePurposeChagnes(){
+        viewModel.getPurposeDataFromLocalDb()
+        viewModel.uiUpdatesPurposeItem.flowWithLifecycle(lifecycle,Lifecycle.State.STARTED).collect { listItem ->
             when (listItem) {
                 is ResponseState.Error -> {
                 }

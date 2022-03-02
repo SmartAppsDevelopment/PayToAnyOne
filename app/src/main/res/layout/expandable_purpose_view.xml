@@ -9,7 +9,7 @@
 
         <variable
             name="model"
-            type="com.example.templatesampleapp.model.Accounts" />
+            type="com.example.templatesampleapp.model.uimodel.PurposeListItem" />
 
         <variable
             name="isViewExpanded"
@@ -43,7 +43,7 @@
                     android:layout_marginVertical="@dimen/_16sdp"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:fontFamily="@font/aspira_demi"
-                    android:text="@string/select_purpose"
+                    android:text="@{model.name}"
                     android:textColor="@color/woodsmoke"
                     android:textSize="@dimen/_16ssp"
                     android:textStyle="normal"
@@ -114,7 +114,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/bottom_guid_line"
-                tools:itemCount="6"
+                tools:itemCount="8"
                 tools:listitem="@layout/purpose_list_item" />
 
 
@@ -122,17 +122,17 @@
                 android:id="@+id/before_expansion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                tools:visibility="gone"
                 android:visibility="@{isViewExpanded ? View.GONE : View.VISIBLE}"
                 app:constraint_referenced_ids="tv_purpose,iv_arrow" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/after_expansion"
                 android:layout_width="wrap_content"
-                tools:visibility="gone"
+
                 android:layout_height="wrap_content"
-                android:visibility="@{isViewExpanded ? View.GONE : View.GONE}"
-                app:constraint_referenced_ids="rv_itemslist,iv_wallat_icon2,tv_selctacc,bottom_guid_line,before_expansion"
+                android:visibility="@{isViewExpanded ? View.VISIBLE : View.GONE}"
+                app:constraint_referenced_ids="rv_itemslist,iv_wallat_icon2,tv_selctacc,bottom_guid_line"
                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

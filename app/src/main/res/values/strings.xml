@@ -13,7 +13,7 @@
     <string name="account">Account</string>
     <string name="pay_from">Pay from</string>
     <string name="pat_to">Pay to</string>
-    <string name="select_purpose">Select Purpose of payment</string>
+    <string name="select_purpose">Select Purpose</string>
     <string name="pkr">PKR</string>
     <string name="select_account">Select Account</string>
 </resources>
