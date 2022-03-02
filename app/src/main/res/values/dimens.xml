@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_margin_start">@dimen/_16sdp</dimen>
+    <dimen name="toolbar_margin_end">@dimen/_16sdp</dimen>
+    <dimen name="toolbar_margin_top">@dimen/_16sdp</dimen>
+    <dimen name="toolbar_margin_bottom">@dimen/_8sdp</dimen>
+
+    <dimen name="iv_user_w">@dimen/_30sdp</dimen>
+    <dimen name="iv_user_h">@dimen/_30sdp</dimen>
+
+    <dimen name="iv_nav_w">@dimen/_16sdp</dimen>
+    <dimen name="iv_nav_h">@dimen/_25sdp</dimen>
+
+    <dimen name="normal_margin">@dimen/_8sdp</dimen>
+    <!--    Payees List Item Configuration -->
+    <dimen name="payee_list_item_iv_w">@dimen/_45sdp</dimen>
+    <dimen name="payee_list_item_iv_h">@dimen/_45sdp</dimen>
+
+    <dimen name="card_user_name_size">@dimen/_15ssp</dimen>
+    <dimen name="content_start_margin">@dimen/_20sdp</dimen>
+    <dimen name="section_margin">@dimen/_6sdp</dimen>
+    <dimen name="line_margin">@dimen/_2sdp</dimen>
+</resources>
