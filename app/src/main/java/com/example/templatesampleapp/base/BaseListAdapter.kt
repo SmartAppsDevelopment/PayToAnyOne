@@ -21,7 +21,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.templatesampleapp.adapter.holders.SampleViewHolder
 
 /**
  * Base list adapter to standardize and simplify initialization for this component.

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.example.templatesampleapp.model.Payees" />
+
+        <variable
+            name="isAccViewExpanded"
+            type="Boolean" />
+        <variable
+            name="isPurposeViewExpanded"
+            type="Boolean" />
+        <variable
+            name="datamodel"
+            type="com.example.templatesampleapp.model.uimodel.CardViewRef" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="@color/concrete"
+            tools:context=".ui.paynow.PayNowFragment">
+
+            <TextView
+                android:id="@+id/payfrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aspira_medium"
+                android:text="@string/pay_from"
+                android:textColor="@color/santas_grey"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@id/expand_acc_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/expand_acc_view"
+                layout="@layout/expandable_acc_view"
+                app:isViewExpanded="@{isAccViewExpanded}"
+                app:layout_constraintBottom_toTopOf="@id/payto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/payfrom" />
+
+
+            <TextView
+                android:id="@+id/payto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/aspira_medium"
+                android:text="@string/pat_to"
+                android:textColor="@color/santas_grey"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@id/card_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/expand_acc_view" />
+
+            <include
+                android:id="@+id/card_view"
+                layout="@layout/cradit_card_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:datamodel="@{datamodel}"
+
+                app:layout_constraintEnd_toEndOf="@id/end_guide"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toBottomOf="@id/payto" />
+
+            <include
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/expand_purpose_view"
+                app:isViewExpanded="@{isPurposeViewExpanded}"
+                android:visibility="visible"
+                layout="@layout/expandable_purpose_view"
+                app:layout_constraintBottom_toTopOf="@id/btn_continue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_view" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_continue"
+                style="@style/button_overlay"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_44sdp"
+
+                android:fontFamily="@font/aspira_demi"
+                android:text="@string/continueuser"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/lochmara"
+                app:cornerRadius="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/end_guide"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toBottomOf="@id/expand_purpose_view" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="0dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="0dp" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/account_expansion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{isAccViewExpanded ? View.GONE : View.VISIBLE}"
+                app:constraint_referenced_ids="payto,card_view" />
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/purpose_expansion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{isPurposeViewExpanded ? View.GONE : View.VISIBLE}"
+                app:constraint_referenced_ids="payto,card_view,payfrom,account_expansion" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

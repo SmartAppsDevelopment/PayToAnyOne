@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_200">@color/concrete</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
+    <color name="purple_700">@color/concrete</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="black_trans">#66000000</color>
+    <color name="concrete">#f3f3f3</color>
+    <color name="tertiary_03">#f3f3f3</color>
+    <color name="shuttle_grey">#515357</color>
+    <color name="woodsmoke">#0f1011</color>
+    <color name="alabaster">#f9f9f9</color>
+    <color name="mischka">#e6e7e9</color>
+    <color name="sun_yellow">#ffd622</color>
+    <color name="bright_lavender">#ce51ff</color>
+    <color name="santas_grey">#9d9fa4</color>
+    <color name="lochmara">#007dc5</color>
+    <color name="light_aquamarine">#55ffd4</color>
+    <color name="iris">#464ab8</color>
+    <color name="oslo_grey">#83868b</color>
+    <color name="white_on_dark">#ffffff</color>
+    <color name="bombay">#b7b9bc</color>
+    <color name="malibu">#4ebeff</color>
 </resources>

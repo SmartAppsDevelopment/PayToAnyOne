@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+<variable
+    name="toolbar"
+    type="com.example.templatesampleapp.model.uimodel.ToolBarRef" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_16sdp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_user_icon"
+            android:layout_width="@dimen/iv_user_w"
+            android:layout_height="@dimen/iv_user_w"
+            android:onClick="@{()->toolbar.userImgClick.invoke()}"
+            app:layout_constraintBottom_toTopOf="@id/tv_top_title"
+            android:background="@color/bombay"
+            android:src="@drawable/man"
+            app:layout_constraintStart_toStartOf="@id/start_guide"
+            app:layout_constraintTop_toTopOf="@id/top_guide"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/iv_search_icon"
+            android:onClick="@{()->toolbar.searchClick.invoke()}"
+            style="@style/Widget.Material3.Button.Icon"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/lochmara"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/bombay"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:icon="@drawable/ic_baseline_search_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="@dimen/_16sdp"
+            app:iconTintMode="multiply"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_user_icon"
+            app:layout_constraintStart_toEndOf="@id/iv_user_icon"
+            app:layout_constraintTop_toTopOf="@id/top_guide"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+
+        <ImageView
+            android:id="@+id/iv_back_icon"
+            android:layout_width="@dimen/iv_nav_w"
+            android:layout_height="@dimen/iv_nav_h"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:src="@drawable/icon_nav_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/end_guide"
+            app:layout_constraintTop_toTopOf="@id/top_guide"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+        <TextView
+            android:id="@+id/tv_top_title"
+            style="@style/toolbar_title"
+            android:text="@{toolbar.title}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_user_icon"
+            app:layout_constraintStart_toStartOf="@id/start_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/toolbar_margin_start" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/toolbar_margin_end" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/toolbar_margin_top" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

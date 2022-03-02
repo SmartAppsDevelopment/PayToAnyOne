@@ -65,10 +65,22 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
 
     //ktx for runtime ktx
+    // Saved state module for ViewModel
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate-ktx:$lifecycleVersion")
+    ///implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha01'
+
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecycleVersion"
     implementation "androidx.fragment:fragment-ktx:1.4.1"
     /////Koin Dependency Injection
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    //For Building Responsive UI
+    implementation "com.intuit.sdp:sdp-android:$rootProject.sdpLib"
+    implementation "com.intuit.ssp:ssp-android:$rootProject.sdpLib"
+
+    //Picasso For loading Images
+    implementation "com.squareup.picasso:picasso:2.71828"
+
 
 }

@@ -27,6 +27,9 @@ buildscript {
         okhttpLoggingVersion = '4.7.2'
         retrofitVersion = '2.9.0'
 
+        sdpLib = '1.0.6'
+        picasso = '2.71828'
+
     }
     dependencies {
         def nav_version = "2.4.1"

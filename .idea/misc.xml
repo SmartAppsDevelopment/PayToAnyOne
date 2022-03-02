@@ -6,6 +6,28 @@
         <entry key="..\:/BilalProject/Practice/TemplateSampleApp/app/src/main/res/layout/activity_main.xml" value="0.178125" />
         <entry key="..\:/BilalProject/Practice/TemplateSampleApp/app/src/main/res/layout/base_recycler_item.xml" value="0.2" />
         <entry key="..\:/BilalProject/Practice/TemplateSampleApp/app/src/main/res/layout/sample_item.xml" value="0.17395833333333333" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/button_shape.xml" value="0.1335" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/card_bg.xml" value="0.1335" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.1335" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/icon_add.xml" value="0.1335" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/icon_button_del.xml" value="0.1335" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/icon_tab_bar_accounts.xml" value="0.1335" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/icon_tab_bar_accounts24.xml" value="0.1335" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/icon_tab_bar_payment.xml" value="0.113" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/account_list_item.xml" value="0.1921875" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/cradit_card_view.xml" value="0.1921875" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/expandable_acc_view.xml" value="0.178125" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/expandable_purpose_view.xml" value="0.178125" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/fragment_empty.xml" value="0.178125" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/fragment_my_payees.xml" value="0.1921875" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/fragment_pay_now.xml" value="0.1921875" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/fragment_payees_detail.xml" value="0.178125" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/fragment_payess_detail.xml" value="0.25" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/payees_list_item.xml" value="0.178125" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/purpose_list_item.xml" value="0.178125" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/top_toolbar.xml" value="0.1921875" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1921875" />
       </map>
     </option>
   </component>

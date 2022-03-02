@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    <import type="android.view.View"/>
+        <variable
+            name="hideEdit"
+            type="Boolean" />
+        <variable
+            name="hideDelete"
+            type="Boolean" />
+        <variable
+            name="datamodel"
+            type="com.example.templatesampleapp.model.uimodel.CardViewRef" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_204sdp"
+        android:background="@drawable/card_bg"
+        app:cardCornerRadius="@dimen/_30sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_bg"
+            android:paddingVertical="@dimen/_8sdp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_user_icon"
+                android:layout_width="@dimen/payee_list_item_iv_w"
+                android:layout_height="@dimen/payee_list_item_iv_h"
+
+
+                android:background="@color/black_trans"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{datamodel.imgName}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/card_user_name_size"
+                app:layout_constraintBottom_toBottomOf="@id/iv_user_icon"
+                app:layout_constraintEnd_toEndOf="@id/iv_user_icon"
+                app:layout_constraintStart_toStartOf="@id/iv_user_icon"
+                app:layout_constraintTop_toTopOf="@id/iv_user_icon" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/aspira_demi"
+                android:text="@{datamodel.name}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_24ssp"
+                app:layout_constraintEnd_toStartOf="@+id/end_guide"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toBottomOf="@id/iv_user_icon" />
+
+            <TextView
+                android:id="@+id/tv_acc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:fontFamily="@font/aspira_regular"
+                android:text="@string/account_number"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_user_name"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
+
+            <TextView
+                android:id="@+id/tv_account_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_margin"
+                android:fontFamily="@font/aspira_medium"
+                android:text="@{datamodel.accNo}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toBottomOf="@id/tv_acc" />
+
+
+            <TextView
+                android:id="@+id/tv_bnk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:fontFamily="@font/aspira_regular"
+                android:text="@string/bank"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_user_name"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toBottomOf="@id/tv_account_number" />
+
+            <TextView
+                android:id="@+id/tv_bank_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_margin"
+                android:fontFamily="@font/aspira_medium"
+                android:text="@{datamodel.bankName}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toBottomOf="@id/tv_bnk" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/content_start_margin" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/content_start_margin" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit"
+                android:visibility="@{datamodel.hideEdit ? View.INVISIBLE : View.VISIBLE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_6sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{()->datamodel.editClick.invoke()}"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/white"
+                app:cornerRadius="@dimen/_30sdp"
+                app:icon="@drawable/icon_add"
+                app:iconGravity="end"
+                app:iconTintMode="multiply"
+                app:layout_constraintEnd_toStartOf="@+id/btn_del"
+                app:layout_constraintTop_toTopOf="@+id/iv_user_icon"
+                app:rippleColor="@color/lochmara" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_del"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:visibility="@{datamodel.hideDelete ? View.INVISIBLE : View.VISIBLE}"
+
+                android:clickable="true"
+                android:focusable="true"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:onClick="@{()->datamodel.delClick.invoke()}"
+                android:padding="0dp"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/white"
+                app:icon="@drawable/icon_button_del"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/_12sdp"
+                app:iconTintMode="multiply"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_edit"
+                app:layout_constraintEnd_toEndOf="@id/end_guide"
+                app:layout_constraintTop_toTopOf="@id/iv_user_icon"
+                app:rippleColor="@color/lochmara"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.example.templatesampleapp.model.uimodel.ToolBarRef
+import com.example.templatesampleapp.ui.activmain.MainActivity
+import com.example.templatesampleapp.ui.activmain.MainViewModel
 
- open class BaseFragment<T : ViewDataBinding>(private var layoutId: Int) : Fragment() {
+abstract class BaseFragment<T : ViewDataBinding>(private var layoutId: Int) : Fragment() {
     lateinit var binding: T
     val isBindingInit by lazy { this::binding.isInitialized }
+    abstract val viewModel: BaseViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,4 +28,10 @@ import androidx.fragment.app.Fragment
         super.onViewCreated(view, savedInstanceState)
         context ?: return
     }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).binding.topBarMain.toolbar=getToolbar()
+    }
+    abstract fun getToolbar():ToolBarRef
 }

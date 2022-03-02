@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/emptyFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_tab_bar_accounts"
+        android:title="@string/accounts"/>
+    <item
+        android:id="@+id/payeesDetailFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_tab_bar_payment"
+        android:title="@string/payment"/>
+    <item
+        android:id="@+id/emptyFragment2"
+        android:enabled="true"
+        android:icon="@drawable/icon_tab_bar_favourate"
+        android:title="@string/favourites"/>
+</menu>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/payeesDetailFragment">
+
+    <fragment
+        android:id="@+id/payeesDetailFragment"
+        android:name="com.example.templatesampleapp.ui.frag_payes.MyPayeesFragment"
+        tools:layout="@layout/fragment_my_payees">
+        <action
+            android:id="@+id/action_payeesDetailFragment_to_payeesDetailsFragment"
+            app:destination="@id/payeesDetailsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/emptyFragment"
+        tools:layout="@layout/fragment_empty"
+        android:name="com.example.templatesampleapp.ui.frag_empty.EmptyFragment"
+         />
+    <fragment
+        android:id="@+id/emptyFragment2"
+        tools:layout="@layout/fragment_empty"
+        android:name="com.example.templatesampleapp.ui.frag_empty.EmptyFragment"
+        />
+    <fragment
+        android:id="@+id/payeesDetailsFragment"
+        android:name="com.example.templatesampleapp.ui.payeedetails.PayeesDetailsFragment"
+        tools:layout="@layout/fragment_payess_detail" >
+        <argument
+            android:name="accountDetails"
+            app:argType="com.example.templatesampleapp.model.Payees"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_payeesDetailsFragment_to_payNowFragment"
+            app:destination="@id/payNowFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/payNowFragment"
+        android:name="com.example.templatesampleapp.ui.paynow.PayNowFragment"
+        tools:layout="@layout/fragment_pay_now" >
+        <argument
+            android:name="payesDetails"
+            app:argType="com.example.templatesampleapp.model.Payees"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>
