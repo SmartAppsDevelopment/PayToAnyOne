@@ -26,7 +26,6 @@ buildscript {
         navigationVersion = '2.4.0-alpha04'
         okhttpLoggingVersion = '4.7.2'
         retrofitVersion = '2.9.0'
-
         sdpLib = '1.0.6'
         picasso = '2.71828'
 

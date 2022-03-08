@@ -65,4 +65,43 @@
         <item name="colorOnSurface">@color/black</item>
     </style>
 
+    <style name="circle_view_style" >
+        <item name="android:background">@drawable/circle_dot</item>
+        <item name="android:layout_width">@dimen/circle_w</item>
+        <item name="android:layout_height">@dimen/circle_h</item>
+    </style>
+
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.AppCompat.Light">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
+
+    <style name="SheetDialogx" parent="Theme.Design.Light.BottomSheetDialog">
+        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">     @android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+
+
+    </style>
+<!--    <style name="BottomSheetD" parent="Widget.Design.BottomSheet.Modal">-->
+<!--        <item name="android:background">@android:color/transparent</item>-->
+<!--    </style>-->
+<!--    <style name="DialogBox" parent="Theme.Design.Light.BottomSheetDialog">-->
+<!--        <item name="android:windowIsFloating">false</item> &lt;!&ndash; This is important &ndash;&gt;-->
+<!--        <item name="android:statusBarColor">#00000000</item> &lt;!&ndash; And then this will be needed &ndash;&gt;-->
+<!--        <item name="android:navigationBarColor">@color/white</item>-->
+<!--        <item name="android:colorBackground">#00FFFFFF</item>-->
+<!--        <item name="bottomSheetStyle">@style/BottomSheetD</item>-->
+<!--    </style>-->
+
 </resources>

@@ -39,11 +39,11 @@ android {
 dependencies {
 
     ///Android base libraries
-    implementation ("androidx.core:core-ktx:$rootProject.androidCore")
-    implementation ("androidx.appcompat:appcompat:$rootProject.appCompatVersion")
-    implementation ("com.google.android.material:material:$rootProject.materialVersion")
-    implementation ("androidx.constraintlayout:constraintlayout:$rootProject.constraintLayout")
-    implementation ("androidx.legacy:legacy-support-v4:$rootProject.legacySupport")
+    implementation("androidx.core:core-ktx:$rootProject.androidCore")
+    implementation("androidx.appcompat:appcompat:$rootProject.appCompatVersion")
+    implementation("com.google.android.material:material:$rootProject.materialVersion")
+    implementation("androidx.constraintlayout:constraintlayout:$rootProject.constraintLayout")
+    implementation("androidx.legacy:legacy-support-v4:$rootProject.legacySupport")
 
     //Room Database with flows
     implementation("androidx.room:room-runtime:$rootProject.roomVersion")
@@ -82,5 +82,7 @@ dependencies {
     //Picasso For loading Images
     implementation "com.squareup.picasso:picasso:2.71828"
 
+    //test
+    //implementation 'com.gitlab.mubashir86:android-sdk-project-gitlab:1.0.2'
 
 }

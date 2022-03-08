@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.example.templatesampleapp.base.BaseViewModel
 import com.example.templatesampleapp.base.PayeeRepository
+import com.example.templatesampleapp.helper.Constants
 import com.example.templatesampleapp.helper.ResponseState
 import com.example.templatesampleapp.model.Accounts
 import com.example.templatesampleapp.model.uimodel.PurposeListItem
@@ -18,12 +19,24 @@ class PayNowViewModel @Inject constructor(
     private var savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
-
     companion object {
         private const val USER_ACCOUNT = "USER_ACCOUNT"
         private const val USER_ACCOUNT_PURPOSE = "USER_ACCOUNT_PURPOSE"
     }
 
+    /*
+    TODO: check is both account and purpose of payment has been slected
+     */
+    var isAccountSelected=false
+    set(value) {
+        field=value
+        verifyTransaction()
+    }
+    var isPurposeSelected=false
+    set(value) {
+        field=value
+        verifyTransaction()
+    }
     var isContinueEnabled = MutableLiveData(false)
 
     var currentTransPurpose = MutableLiveData<PurposeListItem>()
@@ -39,7 +52,6 @@ class PayNowViewModel @Inject constructor(
             field = value
         }
         get() = savedStateHandle.getLiveData(USER_ACCOUNT)
-
 
     val uiUpdates =
         MutableStateFlow<ResponseState<List<Accounts?>>>(ResponseState.Idle("Ideal State"))
@@ -57,8 +69,12 @@ class PayNowViewModel @Inject constructor(
     suspend fun getPurposeDataFromLocalDb() {
         uiUpdatesPurposeItem.emit(ResponseState.Loading())
         repository.getAllTransPurposeList().collect {accountList->
-           currentTransPurpose.value=(accountList.get(0))
+            currentTransPurpose.value= PurposeListItem(Constants.PURPOSE_HEADING)
             uiUpdatesPurposeItem.emit(ResponseState.Success(accountList))
         }
+    }
+
+    private fun verifyTransaction(){
+        isContinueEnabled.value=(isAccountSelected and isPurposeSelected)
     }
 }

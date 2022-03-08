@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="dataModel"
+            type="com.example.templatesampleapp.model.uimodel.FragReviewPayModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context="com.example.templatesampleapp.ui.frag_review.ReviewPaymentFragment">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="@color/concrete"
+            android:layout_height="wrap_content">
+
+            <include
+                layout="@layout/accverify_cardview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:datamodel="@{dataModel.accCardViewRef}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.00999999" />
+
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginBottom="@dimen/_14ssp"
+                android:fontFamily="@font/aspira_demi"
+                android:text="@{dataModel.amount}"
+                android:textAlignment="textStart"
+                android:textColor="@color/woodsmoke"
+                android:textSize="@dimen/_28sdp"
+                app:layout_constraintBottom_toTopOf="@id/btn_proceed_to_pay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_rps"
+                tools:text="500" />
+
+            <TextView
+                android:id="@+id/tv_rps"
+                android:layout_width="@dimen/_100sdp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tv_amount"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:fontFamily="@font/aspira_demi"
+                android:textAlignment="textEnd"
+                android:textColor="@color/malibu"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@id/tv_amount"
+                app:layout_constraintEnd_toStartOf="@id/tv_amount"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/rs"
+                tools:text="Rs  " />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_proceed_to_pay"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_44sdp"
+                android:fontFamily="@font/aspira_demi"
+                android:text="@string/proceed_to_pay"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/lochmara"
+                app:cornerRadius="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_rps" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</layout>

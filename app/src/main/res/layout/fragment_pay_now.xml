@@ -8,6 +8,9 @@
         <import type="android.view.View" />
 
         <variable
+            name="viewmodel"
+            type="com.example.templatesampleapp.ui.paynow.PayNowViewModel" />
+        <variable
             name="model"
             type="com.example.templatesampleapp.model.Payees" />
 
@@ -26,14 +29,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:context=".ui.paynow.PayNowFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:background="@color/concrete"
-            tools:context=".ui.paynow.PayNowFragment">
+            >
 
             <TextView
                 android:id="@+id/payfrom"
@@ -88,10 +92,12 @@
 
             <include
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/expand_purpose_view"
+                app:hintvisble="@{viewmodel.purposeSelected}"
                 app:isViewExpanded="@{isPurposeViewExpanded}"
                 android:visibility="visible"
+                android:layout_marginTop="@dimen/_8sdp"
                 layout="@layout/expandable_purpose_view"
                 app:layout_constraintBottom_toTopOf="@id/btn_continue"
                 app:layout_constraintEnd_toEndOf="parent"

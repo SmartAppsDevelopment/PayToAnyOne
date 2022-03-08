@@ -16,4 +16,11 @@
     <string name="select_purpose">Select Purpose</string>
     <string name="pkr">PKR</string>
     <string name="select_account">Select Account</string>
+    <string name="proceed_to_pay">Proceed To Pay</string>
+    <string name="rs">Rs</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="date">Date</string>
+    <string name="name_of_payee">Name of Payee</string>
+    <string name="share">Share</string>
+    <string name="amount_sent">Amount Sent</string>
 </resources>

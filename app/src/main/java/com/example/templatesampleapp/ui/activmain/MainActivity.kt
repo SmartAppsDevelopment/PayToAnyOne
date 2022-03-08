@@ -1,6 +1,7 @@
 package com.example.templatesampleapp.ui.activmain
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
@@ -30,7 +31,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.bottomNavigation.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.reviewPaymentFragment, R.id.amountFragment ->
+                    binding.bottomNavigation.visibility = View.GONE
+                else ->
+                    binding.bottomNavigation.visibility = View.VISIBLE
 
+            }
+        }
 
         binding.apply {
             bottomNavigation.setupWithNavController(navController)

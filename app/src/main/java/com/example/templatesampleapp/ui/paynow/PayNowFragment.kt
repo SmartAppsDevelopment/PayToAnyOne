@@ -7,6 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.adapter.AccountItemsAdapter
@@ -14,7 +15,6 @@ import com.example.templatesampleapp.adapter.PurposeItemsAdapter
 import com.example.templatesampleapp.base.BaseFragment
 import com.example.templatesampleapp.databinding.FragmentPayNowBinding
 import com.example.templatesampleapp.helper.*
-import com.example.templatesampleapp.model.Payees
 import com.example.templatesampleapp.model.uimodel.AccountsListItem
 import com.example.templatesampleapp.model.uimodel.PurposeListItem
 import com.example.templatesampleapp.model.uimodel.ToolBarRef
@@ -38,22 +38,28 @@ class PayNowFragment :
     }
 
     private fun observeData() {
+        binding.btnContinue.setOnClickListener {
+            val dir = PayNowFragmentDirections.actionPayNowFragmentToAmountFragment(payeesDetails.payesDetails!!)
+            dir.transAaccount = viewModel.currentSelectAccount.value
+            dir.transPurpose = viewModel.currentTransPurpose.value
+            findNavController().safeNavigate(dir)
+        }
         binding.expandPurposeView.root.setOnClickListener {
             val bol = binding.isPurposeViewExpanded ?: false
             binding.isPurposeViewExpanded = !bol
-            binding.expandAccView.root.visibility= if(bol) View.VISIBLE else View.GONE
+            binding.expandAccView.root.visibility = if (bol) View.VISIBLE else View.GONE
         }
         binding.expandAccView.root.setOnClickListener {
             val bol = binding.isAccViewExpanded ?: false
             binding.isAccViewExpanded = !bol
-          //  binding.expandPurposeView.root.visibility= if(bol) View.VISIBLE else View.GONE
+            //  binding.expandPurposeView.root.visibility= if(bol) View.VISIBLE else View.GONE
 
         }
         viewModel.viewModelScope.launch {
             observeAccountChange()
         }
         lifecycleScope.launchWhenResumed {
-            observePurposeChagnes()
+            observePurposeChanges()
         }
         viewModel.isContinueEnabled.observe(viewLifecycleOwner) {
             showLog("yes its lock isEnabled=$it")
@@ -63,6 +69,7 @@ class PayNowFragment :
 
     private fun setCurrentUserOnCard() {
         payeesDetails.payesDetails?.let {
+            viewModel.isAccountSelected = true
             binding.datamodel = it.toCardViewRef({
                 showLog("Edit Click ")
             }, {
@@ -84,8 +91,11 @@ class PayNowFragment :
             binding.expandAccView.model = it
         }
         viewModel.currentTransPurpose.observe(viewLifecycleOwner) {
-            binding.isPurposeViewExpanded = false
             binding.expandPurposeView.model = it
+
+            if (binding.isPurposeViewExpanded == true)
+                binding.expandPurposeView.root.callOnClick()
+
         }
 
 
@@ -109,44 +119,47 @@ class PayNowFragment :
         }
 
     }
-    private suspend fun observePurposeChagnes(){
-        viewModel.getPurposeDataFromLocalDb()
-        viewModel.uiUpdatesPurposeItem.flowWithLifecycle(lifecycle,Lifecycle.State.STARTED).collect { listItem ->
-            when (listItem) {
-                is ResponseState.Error -> {
-                }
-                is ResponseState.Idle -> {
-                }
-                is ResponseState.Loading -> {
-                }
-                is ResponseState.Success -> {
-                    val mappedList = listItem.data!!.map {
-                        it!!
-                    }
-                    updateDataInExpandViewPurpose(mappedList)
 
+    private suspend fun observePurposeChanges() {
+        viewModel.getPurposeDataFromLocalDb()
+        binding.viewmodel=viewModel
+        viewModel.uiUpdatesPurposeItem.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+            .collect { listItem ->
+                when (listItem) {
+                    is ResponseState.Error -> {
+                    }
+                    is ResponseState.Idle -> {
+                    }
+                    is ResponseState.Loading -> {
+                    }
+                    is ResponseState.Success -> {
+                        val mappedList = listItem.data!!.map {
+                            it!!
+                        }
+                        updateDataInExpandViewPurpose(mappedList)
+                    }
                 }
             }
-        }
     }
 
     private fun updateDataInExpandView(data: List<AccountsListItem>) {
         binding.expandAccView.rvItemslist.adapter = AccountItemsAdapter { item, index ->
             showLog(item.toString())
-            viewModel.currentSelectAccount.value=(item.toAccountItem())
+            viewModel.currentSelectAccount.value = item.toAccountItem()
+            viewModel.isAccountSelected = true
         }.apply {
             submitList(data)
         }
-
     }
+
     private fun updateDataInExpandViewPurpose(data: List<PurposeListItem>?) {
         binding.expandPurposeView.rvItemslist.adapter = PurposeItemsAdapter { item, index ->
             showLog(item.toString())
-            viewModel.currentTransPurpose.value=(item)
+            viewModel.isPurposeSelected = true
+            viewModel.currentTransPurpose.value = item
         }.apply {
             submitList(data)
         }
-
     }
 
     override fun getToolbar() = ToolBarRef("Pay", searchClick = {
@@ -154,6 +167,5 @@ class PayNowFragment :
     }, userImgClick = {
         showLog("1 Img CLick")
     })
-
 
 }

@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 class PayeesDetailsFragment :
     BaseFragment<FragmentPayessDetailBinding>(R.layout.fragment_payess_detail) {
 
-    val payessDetails by navArgs<PayeesDetailsFragmentArgs>()
+    private val payessDetails by navArgs<PayeesDetailsFragmentArgs>()
     override val viewModel by viewModels<PayeesDetailViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

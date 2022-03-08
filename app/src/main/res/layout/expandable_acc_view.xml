@@ -34,26 +34,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_wallat_icon"
-                android:layout_width="@dimen/payee_list_item_iv_w"
-                android:layout_height="@dimen/payee_list_item_iv_h"
-                android:layout_margin="@dimen/_20sdp"
-                android:background="@color/bombay"
-                android:scaleType="centerInside"
-                android:src="@drawable/icon_tab_bar_accounts"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
-
+          
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier_user_icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/normal_margin"
                 app:barrierDirection="right"
-                app:constraint_referenced_ids="iv_wallat_icon" />
+                app:constraint_referenced_ids="iv_wallat_icon2" />
 
             <TextView
                 android:id="@+id/tv_title"
@@ -69,7 +57,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="@id/barrier_user_icon"
-                app:layout_constraintTop_toTopOf="@id/iv_wallat_icon" />
+                app:layout_constraintTop_toTopOf="@id/iv_wallat_icon2" />
 
             <TextView
                 android:id="@+id/tv_number"
@@ -100,7 +88,7 @@
                 android:textColor="@color/woodsmoke"
                 android:textSize="@dimen/_12ssp"
                 android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@id/iv_wallat_icon"
+                app:layout_constraintBottom_toBottomOf="@id/iv_wallat_icon2"
 
                 app:layout_constraintEnd_toEndOf="@+id/tv_number"
                 app:layout_constraintStart_toStartOf="@id/barrier_user_icon"
@@ -118,7 +106,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_wallat_icon1"
+                android:id="@+id/iv_wallat_icon21"
                 android:layout_width="@dimen/_34sdp"
                 android:layout_height="@dimen/_34sdp"
                 android:layout_margin="@dimen/_20sdp"
@@ -140,7 +128,7 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/icon_tab_bar_accounts24"
                 app:layout_constraintBottom_toBottomOf="@id/bottom_guid_line"
-                app:layout_constraintStart_toEndOf="@id/iv_wallat_icon1"
+                app:layout_constraintStart_toEndOf="@id/iv_wallat_icon21"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
@@ -188,16 +176,16 @@
                 android:layout_height="wrap_content"
 
                 android:visibility="@{isViewExpanded ? View.GONE : View.VISIBLE}"
-                app:constraint_referenced_ids="iv_wallat_icon,imageView,tv_pkr,tv_number,tv_title" />
+                app:constraint_referenced_ids="imageView,tv_pkr,tv_number,tv_title" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/after_expansion"
-                tools:visibility="gone"
 
+                tools:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="@{isViewExpanded ? View.VISIBLE : View.GONE}"
-                app:constraint_referenced_ids="rv_itemslist,iv_wallat_icon1,iv_wallat_icon2,tv_selctacc,bottom_guid_line"
+                app:constraint_referenced_ids="rv_itemslist,iv_wallat_icon21,tv_selctacc,bottom_guid_line"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

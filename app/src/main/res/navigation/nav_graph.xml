@@ -53,5 +53,60 @@
             app:argType="com.example.templatesampleapp.model.Payees"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_payNowFragment_to_amountFragment"
+            app:destination="@id/amountFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/amountFragment"
+        tools:layout="@layout/fragment_amount"
+        android:name="com.example.templatesampleapp.ui.amount.AmountFragment">
+        <argument
+            android:name="TransPurpose"
+            app:argType="com.example.templatesampleapp.model.uimodel.PurposeListItem"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="TransAaccount"
+            app:argType="com.example.templatesampleapp.model.Accounts"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_amountFragment_to_reviewPaymentFragment"
+            app:destination="@id/reviewPaymentFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+        <argument
+            android:name="payees"
+            app:argType="com.example.templatesampleapp.model.Payees" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewPaymentFragment"
+        android:name="com.example.templatesampleapp.ui.frag_review.ReviewPaymentFragment"
+        tools:layout="@layout/fragment_reviewpayment" >
+        <argument
+            android:name="TransPurpose"
+            app:argType="com.example.templatesampleapp.model.uimodel.PurposeListItem"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="TransAaccount"
+            app:argType="com.example.templatesampleapp.model.Accounts"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+        <argument
+            android:name="Amount"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="payees"
+            app:argType="com.example.templatesampleapp.model.Payees" />
     </fragment>
 </navigation>
