@@ -22,13 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/normal_margin"
-        android:clickable="true"
-        android:focusable="true"
+
         app:cardCornerRadius="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/payfrom"
-        app:rippleColor="@color/shuttle_grey">
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -161,7 +160,7 @@
                 android:id="@+id/rv_itemslist"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="@dimen/_44ssp"
+
                 app:layout_constraintHeight_percent="0.8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -176,14 +175,14 @@
                 android:id="@+id/before_expansion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                tools:visibility="gone"
                 android:visibility="@{isViewExpanded ? View.GONE : View.VISIBLE}"
                 app:constraint_referenced_ids="imageView,tv_pkr,tv_number,tv_title" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/after_expansion"
 
-                tools:visibility="gone"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="@{isViewExpanded ? View.VISIBLE : View.GONE}"

@@ -12,7 +12,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:background="@drawable/list_item_shape"
-        android:layout_height="@dimen/_52sdp">
+        android:layout_margin="@dimen/_6sdp"
+        android:paddingStart="@dimen/_42sdp"
+        android:layout_height="@dimen/_52sdp"
+        tools:ignore="RtlSymmetry">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
