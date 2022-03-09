@@ -18,15 +18,7 @@
         android:layout_marginVertical="@dimen/normal_margin"
         app:cardCornerRadius="@dimen/_16sdp"
         android:focusable="true"
-        android:background="@drawable/list_item_shape"
-
-        android:elevation="8dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0.0px"
-        android:clipToPadding="false"
-        android:clipChildren="false"
-        app:cardElevation="@dimen/_10sdp"
-        app:cardPreventCornerOverlap="false">
+        app:cardElevation="@dimen/_6sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
