@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="model"
             type="com.example.templatesampleapp.model.uimodel.PurposeListItem" />
@@ -12,6 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@drawable/list_item_shape"
         android:layout_height="@dimen/_52sdp">
         <TextView
             android:layout_width="match_parent"

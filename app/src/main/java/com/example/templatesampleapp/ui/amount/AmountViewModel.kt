@@ -29,7 +29,7 @@ class AmountViewModel @Inject constructor(
     }
 
     var isProceedToPayEnabled = MutableLiveData(false)
-    var txtChangeListener:String="123"
+    var txtChangeListener:String="0"
 
     private fun verifyTransaction(){
         isProceedToPayEnabled.value=(isAmountVerified)

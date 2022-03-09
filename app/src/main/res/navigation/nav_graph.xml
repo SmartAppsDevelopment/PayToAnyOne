@@ -80,8 +80,11 @@
             app:destination="@id/reviewPaymentFragment"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right"
+            app:popUpTo="@id/payeesDetailFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="payees"
             app:argType="com.example.templatesampleapp.model.Payees" />

@@ -17,7 +17,8 @@ class DataSource {
             Payees((R.drawable.man2).toString(),"Ahmad ","000100462824600","Banka Bank"),
             Payees((R.drawable.man).toString(),"Umair ","000100462824600","UBL Bank"),
             Payees((R.drawable.man1).toString(),"Asma ","000100462824600","Alfla Bank"),
-            Payees((R.drawable.man2).toString(),"Khaild Abbasi ","000100462824600","Allied Bank")
+            Payees((R.drawable.man2).toString(),"Khaild Abbasi ","000100462824600","Allied Bank"),
+            Payees((R.drawable.man).toString(),"Kareem Chitta ","090078601","Al Baraka Bank")
         ))
     }
 
@@ -29,6 +30,7 @@ class DataSource {
             Accounts("Ahmad ","000100462824600","112,231,011"),
             Accounts("Umair ","000100462824600","1212,3432,23423"),
             Accounts("Asma ","000100462824600","00000120430"),
+            Accounts("Janger Turke ","0132739832987321","2000"),
             Accounts("Khaild Abbasi ","000100462824600","1212,3432,234")
         ))
     }
@@ -40,6 +42,8 @@ class DataSource {
             PurposeListItem("Business"),
             PurposeListItem("Education"),
             PurposeListItem("Donation"),
+            PurposeListItem("Charity"),
+            PurposeListItem("Loan"),
             PurposeListItem("Others")
         ))
     }

@@ -1,11 +1,13 @@
 package com.example.templatesampleapp.helper
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.NavGraph
@@ -74,3 +76,4 @@ fun getCurrentDateTime():String{
     val date=System.currentTimeMillis()
    return SimpleDateFormat("dd MMMM, yyyy").format(date)
 }
+

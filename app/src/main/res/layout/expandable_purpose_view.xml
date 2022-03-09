@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aspira_medium"
                 android:textStyle="normal"
-                android:visibility="@{hintvisble ? View.VISIBLE : View.GONE}"
+                android:visibility="@{hintvisble ? View.VISIBLE : View.INVISIBLE}"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toTopOf="parent"

@@ -1,7 +1,12 @@
 package com.example.templatesampleapp.ui.amount
 
+import android.content.Context
+import android.inputmethodservice.InputMethodService
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -12,7 +17,6 @@ import com.example.templatesampleapp.databinding.FragmentAmountBinding
 import com.example.templatesampleapp.helper.safeNavigate
 import com.example.templatesampleapp.helper.showKeyboard
 import com.example.templatesampleapp.helper.showLog
-import com.example.templatesampleapp.helper.showToast
 import com.example.templatesampleapp.model.uimodel.AmountFragmentModel
 import com.example.templatesampleapp.model.uimodel.ToolBarRef
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,11 +32,13 @@ class AmountFragment :
         super.onViewCreated(view, savedInstanceState)
         showLog(transData.toString())
         setDataToView()
-
-
-
         attachLister()
+        showKeyBoard()
+    }
 
+    private fun showKeyBoard() {
+        binding.tvAmount.focusAndShowKeyboard()
+      //  requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
     }
 
     private fun attachLister() = with(binding) {
@@ -49,8 +55,8 @@ class AmountFragment :
                 amountFrag.amount,
                 transData.payees
             )
-            dir.transAaccount=transData.transAaccount
-            dir.transPurpose=transData.transPurpose
+            dir.transAaccount = transData.transAaccount
+            dir.transPurpose = transData.transPurpose
             findNavController().safeNavigate(dir)
         }
 
@@ -79,12 +85,10 @@ class AmountFragment :
         binding.datamodel = amountFrag
     }
 
-
     override fun getToolbar() = ToolBarRef("Pay", searchClick = {
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")
     })
-
 
 }

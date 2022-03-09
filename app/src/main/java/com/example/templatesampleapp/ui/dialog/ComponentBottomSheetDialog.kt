@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.databinding.PaySuccessDialogBinding
 import com.example.templatesampleapp.model.uimodel.DialogModel
@@ -40,6 +41,7 @@ class ComponentBottomSheetDialog(var dialogModel: DialogModel) : BottomSheetDial
         }
         dataModel.ivCross.setOnClickListener {
             dismiss()
+            findNavController().popBackStack()
         }
 
         return dataModel.root

@@ -15,6 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:paddingBottom="@dimen/_16ssp"
+            android:background="@drawable/list_item_shape"
             android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView

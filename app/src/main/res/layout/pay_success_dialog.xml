@@ -119,14 +119,14 @@
 
             <TextView
                 android:id="@+id/tv_paidtohint"
-                android:layout_width="50dp"
-                android:layout_height="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6ssp"
                 android:fontFamily="@font/aspira_demi"
                 android:gravity="center_horizontal"
                 android:text="Paid to"
                 android:textColor="@color/bombay"
-                android:textSize="16sp"
+                android:textSize="@dimen/_16ssp"
                 android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

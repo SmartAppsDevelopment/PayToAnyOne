@@ -82,7 +82,6 @@ dependencies {
     //Picasso For loading Images
     implementation "com.squareup.picasso:picasso:2.71828"
 
-    //test
-    //implementation 'com.gitlab.mubashir86:android-sdk-project-gitlab:1.0.2'
+
 
 }

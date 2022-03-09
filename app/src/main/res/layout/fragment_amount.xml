@@ -53,7 +53,7 @@
             app:layout_constraintVertical_bias="1.0"
             tools:text="Rs" />
 
-        <EditText
+        <com.example.templatesampleapp.customview.FixedKeyboardEditText
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
             android:maxWidth="@dimen/_140sdp"
@@ -64,6 +64,7 @@
             android:gravity="center_horizontal"
             android:inputType="number"
             android:singleLine="true"
+
             android:text="@={datamodel.amount}"
             android:textColor="@color/woodsmoke"
             android:textSize="@dimen/_60ssp"

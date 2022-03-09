@@ -1,5 +1,6 @@
 package com.example.templatesampleapp.ui.paynow
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -34,12 +35,12 @@ class PayNowFragment :
         setCurrentUserOnCard()
         setCardViewData()
         observeData()
-
     }
 
     private fun observeData() {
         binding.btnContinue.setOnClickListener {
-            val dir = PayNowFragmentDirections.actionPayNowFragmentToAmountFragment(payeesDetails.payesDetails!!)
+            val dir =
+                PayNowFragmentDirections.actionPayNowFragmentToAmountFragment(payeesDetails.payesDetails!!)
             dir.transAaccount = viewModel.currentSelectAccount.value
             dir.transPurpose = viewModel.currentTransPurpose.value
             findNavController().safeNavigate(dir)
@@ -64,6 +65,11 @@ class PayNowFragment :
         viewModel.isContinueEnabled.observe(viewLifecycleOwner) {
             showLog("yes its lock isEnabled=$it")
             binding.btnContinue.isEnabled = it
+        }
+        with(binding.cardView) {
+            ivUserIcon.setImageResource(R.drawable.icon_menu_mobile_top_up_resize)
+            hideTxtOnImg=true
+           ivUserIcon.setBackgroundColor(Color.WHITE)
         }
     }
 
@@ -122,7 +128,7 @@ class PayNowFragment :
 
     private suspend fun observePurposeChanges() {
         viewModel.getPurposeDataFromLocalDb()
-        binding.viewmodel=viewModel
+        binding.viewmodel = viewModel
         viewModel.uiUpdatesPurposeItem.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
             .collect { listItem ->
                 when (listItem) {
