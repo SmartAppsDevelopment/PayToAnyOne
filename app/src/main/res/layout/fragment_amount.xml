@@ -57,7 +57,7 @@
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
             android:maxWidth="@dimen/_140sdp"
-            android:hint="0"
+            android:hint="@string/_0"
             android:layout_height="wrap_content"
             android:background="@null"
             android:minWidth="@dimen/_50sdp"

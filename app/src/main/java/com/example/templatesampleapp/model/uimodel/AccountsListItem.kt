@@ -6,6 +6,4 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AccountsListItem(val name: String, val accountNumber: String, val amount: String) :
-    BaseModel(), Parcelable {
-    var isListExpanded = false
-}
+    BaseModel(), Parcelable

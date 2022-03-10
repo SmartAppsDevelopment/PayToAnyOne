@@ -151,7 +151,7 @@
                 android:focusable="true"
                 android:textSize="@dimen/_12ssp"
                 android:onClick="@{()->datamodel.editClick.invoke()}"
-                android:text="Edit"
+                android:text="@string/edit"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:visibility="@{datamodel.hideEdit ? View.INVISIBLE : View.VISIBLE}"

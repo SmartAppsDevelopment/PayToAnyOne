@@ -33,8 +33,6 @@ class ReviewPaymentFragment :
                     accountDetails.transAaccount!!.name,
                     accountDetails.amount ?: "0"
                 ) { requireContext().showToast("Share Click") })
-
-
                 .show(
                 requireActivity().supportFragmentManager,
                 "SdkReviewPayment"
@@ -43,7 +41,7 @@ class ReviewPaymentFragment :
         with(accountDetails) {
             binding.dataModel =
                 viewModel.getPaymentModel(payees, transAaccount!!, transPurpose!!, amount!!) {
-                    showLog("sdlkfjsdlkfdsjf")
+
                 }
         }
 
