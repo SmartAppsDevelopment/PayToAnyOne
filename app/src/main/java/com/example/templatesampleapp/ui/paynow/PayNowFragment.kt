@@ -1,6 +1,5 @@
 package com.example.templatesampleapp.ui.paynow
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -66,11 +65,11 @@ class PayNowFragment :
             showLog("yes its lock isEnabled=$it")
             binding.btnContinue.isEnabled = it
         }
-        with(binding.cardView) {
-            ivUserIcon.setImageResource(R.drawable.icon_menu_mobile_top_up_resize)
-            hideTxtOnImg=true
-           ivUserIcon.setBackgroundColor(Color.WHITE)
-        }
+//        with(binding.cardView) {
+//         //   ivUserIcon.setImageResource(R.drawable.icon_menu_mobile_top_up_resize)
+//           // hideTxtOnImg=true
+//           //ivUserIcon.setBackgroundColor(Color.WHITE)
+//        }
     }
 
     private fun setCurrentUserOnCard() {
@@ -149,7 +148,7 @@ class PayNowFragment :
     }
 
     private fun updateDataInExpandView(data: List<AccountsListItem>) {
-        binding.expandAccView.rvItemslist.adapter = AccountItemsAdapter { item, index ->
+        binding.expandAccView.rvItemslist.adapter = AccountItemsAdapter { item, _ ->
             showLog(item.toString())
             viewModel.currentSelectAccount.value = item.toAccountItem()
             viewModel.isAccountSelected = true
@@ -159,7 +158,7 @@ class PayNowFragment :
     }
 
     private fun updateDataInExpandViewPurpose(data: List<PurposeListItem>?) {
-        binding.expandPurposeView.rvItemslist.adapter = PurposeItemsAdapter { item, index ->
+        binding.expandPurposeView.rvItemslist.adapter = PurposeItemsAdapter { item, _ ->
             showLog(item.toString())
             viewModel.isPurposeSelected = true
             viewModel.currentTransPurpose.value = item

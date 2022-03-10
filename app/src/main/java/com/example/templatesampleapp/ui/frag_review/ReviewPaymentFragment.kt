@@ -27,7 +27,15 @@ class ReviewPaymentFragment :
         super.onViewCreated(view, savedInstanceState)
         binding.btnProceedToPay.setOnClickListener {
             showLog("BtnClicked Found 112")
-            ComponentBottomSheetDialog(DialogModel(accountDetails.payees.name,accountDetails.transAaccount!!.name,accountDetails.amount?:"0"){ requireContext().showToast("Share Click")}).show(
+            ComponentBottomSheetDialog(
+                DialogModel(
+                    accountDetails.payees.name,
+                    accountDetails.transAaccount!!.name,
+                    accountDetails.amount ?: "0"
+                ) { requireContext().showToast("Share Click") })
+
+
+                .show(
                 requireActivity().supportFragmentManager,
                 "SdkReviewPayment"
             )

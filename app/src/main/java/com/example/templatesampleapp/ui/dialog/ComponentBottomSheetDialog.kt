@@ -1,5 +1,6 @@
 package com.example.templatesampleapp.ui.dialog
 
+import android.app.Dialog
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -15,6 +16,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.databinding.PaySuccessDialogBinding
 import com.example.templatesampleapp.model.uimodel.DialogModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.drawable.DrawableUtils
 
@@ -45,5 +48,12 @@ class ComponentBottomSheetDialog(var dialogModel: DialogModel) : BottomSheetDial
         }
 
         return dataModel.root
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return BottomSheetDialog(requireContext(), theme).apply {
+            behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            behavior.peekHeight = Resources.getSystem().displayMetrics.heightPixels
+        }
     }
 }
