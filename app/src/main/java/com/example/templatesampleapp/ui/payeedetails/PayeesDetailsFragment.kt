@@ -7,16 +7,11 @@ import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
-import com.example.templatesampleapp.adapter.PayeesitemsAdapter
 import com.example.templatesampleapp.base.BaseFragment
-import com.example.templatesampleapp.databinding.FragmentMyPayeesBinding
 import com.example.templatesampleapp.databinding.FragmentPayessDetailBinding
 import com.example.templatesampleapp.helper.*
-import com.example.templatesampleapp.model.uimodel.ToolBarRef
-import com.example.templatesampleapp.ui.frag_payes.PayeesViewModel
+import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -43,7 +38,7 @@ class PayeesDetailsFragment :
     }
 
 
-    override fun getToolbar() = ToolBarRef("Payees Details", searchClick = {
+    override fun getToolbar() = ToolBarModel("Payees Details", searchClick = {
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")

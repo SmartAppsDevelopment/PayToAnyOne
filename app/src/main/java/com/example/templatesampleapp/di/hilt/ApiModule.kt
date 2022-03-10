@@ -50,9 +50,4 @@ object ApiModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-
-//    @Singleton
-//    @Provides
-//    fun provideApiService(retrofit: Retrofit): AgifyService = retrofit.create(AgifyService::class.java)
-
 }

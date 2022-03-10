@@ -27,8 +27,8 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_user_icon"
                 setDrawIcon="@{model.iconDrawableId}"
-                android:layout_width="@dimen/payee_list_item_iv_w"
-                android:layout_height="@dimen/payee_list_item_iv_h"
+                android:layout_width="@dimen/_37sdp"
+                android:layout_height="@dimen/_37sdp"
                 android:layout_margin="@dimen/_20sdp"
                 android:background="@color/bombay"
                 android:src="@drawable/man"
@@ -50,6 +50,7 @@
                 style="@style/payees_item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/_13ssp"
                 android:text="@{model.name}"
                 tools:text="This is Sample Text For "
                 app:layout_constraintBottom_toTopOf="@id/tv_number"
@@ -64,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{model.accountNumber}"
-
+android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toTopOf="@id/tv_pkr"
                 app:layout_constraintStart_toStartOf="@id/barrier_user_icon"
                 app:layout_constraintTop_toBottomOf="@id/tv_title" />
@@ -76,13 +77,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{model.bankName}"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toBottomOf="@id/iv_user_icon"
                 app:layout_constraintStart_toStartOf="@id/barrier_user_icon"
                 app:layout_constraintTop_toBottomOf="@id/tv_number" />
 
             <ImageView
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
                 android:layout_marginEnd="@dimen/_6sdp"
                 android:src="@drawable/ic_baseline_navigate_next_24"
                 app:layout_constraintBottom_toBottomOf="parent"

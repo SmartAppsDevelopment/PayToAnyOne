@@ -11,7 +11,7 @@ import com.example.templatesampleapp.base.BaseFragment
 import com.example.templatesampleapp.databinding.FragmentMyPayeesBinding
 import com.example.templatesampleapp.helper.*
 import com.example.templatesampleapp.model.Payees
-import com.example.templatesampleapp.model.uimodel.ToolBarRef
+import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -31,13 +31,11 @@ class MyPayeesFragment :
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvListItems.adapter = PayeesitemsAdapter(object :(Payees,Int)->Unit{
-            override fun invoke(p1: Payees, p2: Int) {
-                val dir=MyPayeesFragmentDirections.actionPayeesDetailFragmentToPayeesDetailsFragment()
-                dir.accountDetails=p1
-                findNavController().navigate(dir)
-            }
-        }).apply {
+        binding.rvListItems.adapter = PayeesitemsAdapter { payees, _ ->
+            val dir = MyPayeesFragmentDirections.actionPayeesDetailFragmentToPayeesDetailsFragment()
+            dir.accountDetails = payees
+            findNavController().navigate(dir)
+        }.apply {
             lifecycleScope.launch {
                 viewModel.uiUpdates
                     .collectLatest {
@@ -53,7 +51,7 @@ class MyPayeesFragment :
                             }
                             is ResponseState.Success -> {
                                 hideLoading()
-                                this@apply.submitList(it.data)
+                                submitList(it.data)
                             }
                         }
                     }
@@ -79,7 +77,7 @@ class MyPayeesFragment :
     }
 
 
-    override fun getToolbar() = ToolBarRef("My Payees", searchClick = {
+    override fun getToolbar() = ToolBarModel("My Payees", searchClick = {
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")

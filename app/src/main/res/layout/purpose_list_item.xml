@@ -22,7 +22,7 @@
             android:fontFamily="@font/aspira_medium"
             android:text="@{model.name}"
             android:textColor="@color/woodsmoke"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="@dimen/_13ssp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

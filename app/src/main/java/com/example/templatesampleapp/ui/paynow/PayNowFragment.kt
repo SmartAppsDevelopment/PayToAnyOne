@@ -17,7 +17,7 @@ import com.example.templatesampleapp.databinding.FragmentPayNowBinding
 import com.example.templatesampleapp.helper.*
 import com.example.templatesampleapp.model.uimodel.AccountsListItem
 import com.example.templatesampleapp.model.uimodel.PurposeListItem
-import com.example.templatesampleapp.model.uimodel.ToolBarRef
+import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -167,7 +167,7 @@ class PayNowFragment :
         }
     }
 
-    override fun getToolbar() = ToolBarRef("Pay", searchClick = {
+    override fun getToolbar() = ToolBarModel("Pay", searchClick = {
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")

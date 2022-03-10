@@ -10,7 +10,7 @@ import com.example.templatesampleapp.databinding.FragmentReviewpaymentBinding
 import com.example.templatesampleapp.helper.showLog
 import com.example.templatesampleapp.helper.showToast
 import com.example.templatesampleapp.model.uimodel.DialogModel
-import com.example.templatesampleapp.model.uimodel.ToolBarRef
+import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import com.example.templatesampleapp.ui.dialog.ComponentBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,7 +49,7 @@ class ReviewPaymentFragment :
 
     }
 
-    override fun getToolbar() = ToolBarRef("Review\nPayment", searchClick = {
+    override fun getToolbar() = ToolBarModel("Review\nPayment", searchClick = {
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")

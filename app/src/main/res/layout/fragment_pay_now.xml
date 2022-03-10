@@ -97,7 +97,7 @@
                 android:id="@+id/expand_purpose_view"
                 app:hintvisble="@{viewmodel.purposeSelected}"
                 app:isViewExpanded="@{isPurposeViewExpanded}"
-                android:visibility="visible"
+
                 android:layout_marginTop="@dimen/_8sdp"
                 layout="@layout/expandable_purpose_view"
                 app:layout_constraintBottom_toTopOf="@id/btn_continue"
@@ -111,7 +111,7 @@
                 style="@style/button_overlay"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_44sdp"
-
+                android:layout_marginBottom="@dimen/_17sdp"
                 android:fontFamily="@font/aspira_demi"
                 android:text="@string/continueuser"
                 android:textAllCaps="false"
@@ -120,8 +120,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/end_guide"
                 app:layout_constraintStart_toStartOf="@id/start_guide"
-                app:layout_constraintTop_toBottomOf="@id/expand_purpose_view" />
-
+                app:layout_constraintTop_toBottomOf="@id/barrier_expand_view"
+                app:layout_constraintVertical_bias="1.0" />
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_expand_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="expand_purpose_view,expand_acc_view" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/end_guide"
                 android:layout_width="wrap_content"
@@ -140,14 +146,16 @@
                 android:id="@+id/account_expansion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:visibility="@{isAccViewExpanded ? View.GONE : View.VISIBLE}"
-                app:constraint_referenced_ids="payto,card_view" />
+                app:constraint_referenced_ids="payto,card_view,expand_purpose_view" />
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/purpose_expansion"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
                 android:visibility="@{isPurposeViewExpanded ? View.GONE : View.VISIBLE}"
-                app:constraint_referenced_ids="payto,card_view,payfrom,account_expansion" />
+                app:constraint_referenced_ids="payto,card_view,payfrom" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

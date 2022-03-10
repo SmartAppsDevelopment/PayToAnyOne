@@ -5,7 +5,7 @@
     <data>
 <variable
     name="toolbar"
-    type="com.example.templatesampleapp.model.uimodel.ToolBarRef" />
+    type="com.example.templatesampleapp.model.uimodel.ToolBarModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
             android:layout_height="@dimen/iv_user_w"
             android:onClick="@{()->toolbar.userImgClick.invoke()}"
             app:layout_constraintBottom_toTopOf="@id/tv_top_title"
-            android:background="@color/bombay"
+            android:background="@color/mischka"
             android:src="@drawable/man"
             app:layout_constraintStart_toStartOf="@id/start_guide"
             app:layout_constraintTop_toTopOf="@id/top_guide"
@@ -41,7 +41,7 @@
             android:padding="0dp"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            app:backgroundTint="@color/bombay"
+            app:backgroundTint="@color/mischka"
             android:layout_marginStart="@dimen/_8sdp"
             app:icon="@drawable/ic_baseline_search_24"
             app:iconGravity="textStart"
@@ -68,6 +68,7 @@
         <TextView
             android:id="@+id/tv_top_title"
             style="@style/toolbar_title"
+
             android:text="@{toolbar.title}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_user_icon"

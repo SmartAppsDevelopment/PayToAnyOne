@@ -1,12 +1,7 @@
 package com.example.templatesampleapp.ui.amount
 
-import android.content.Context
-import android.inputmethodservice.InputMethodService
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -18,7 +13,7 @@ import com.example.templatesampleapp.helper.safeNavigate
 import com.example.templatesampleapp.helper.showKeyboard
 import com.example.templatesampleapp.helper.showLog
 import com.example.templatesampleapp.model.uimodel.AmountFragmentModel
-import com.example.templatesampleapp.model.uimodel.ToolBarRef
+import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -85,7 +80,7 @@ class AmountFragment :
         binding.datamodel = amountFrag
     }
 
-    override fun getToolbar() = ToolBarRef("Pay", searchClick = {
+    override fun getToolbar() = ToolBarModel("Pay", searchClick = {
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")

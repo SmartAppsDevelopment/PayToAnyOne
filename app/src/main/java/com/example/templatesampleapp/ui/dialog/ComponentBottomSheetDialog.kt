@@ -46,7 +46,7 @@ class ComponentBottomSheetDialog(var dialogModel: DialogModel) : BottomSheetDial
             dismiss()
             findNavController().popBackStack()
         }
-
+isCancelable=false
         return dataModel.root
     }
 

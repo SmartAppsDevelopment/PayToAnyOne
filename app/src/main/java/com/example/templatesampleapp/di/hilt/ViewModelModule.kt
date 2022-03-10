@@ -27,10 +27,4 @@ object ViewModelModule {
     @Provides
     fun getPayeesViewModel(payeeRepository: PayeeRepository)=PayeesViewModel(payeeRepository)
 
-    @Provides
-    fun getMainViewModel()=MainViewModel()
-
-    @Provides
-    fun getPayeesDetailViewModel()=PayeesDetailViewModel()
-
 }

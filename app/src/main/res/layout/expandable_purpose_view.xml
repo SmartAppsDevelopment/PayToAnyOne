@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:animateLayoutChanges="true"
-            android:minHeight="@dimen/_70sdp">
+            android:minHeight="@dimen/_58sdp">
 
             <TextView
                 android:id="@+id/select_purpose"
@@ -44,9 +44,8 @@
                 android:fontFamily="@font/aspira_medium"
                 android:text="@string/select_purpose"
                 android:textColor="@color/santas_grey"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_10ssp"
                 android:textStyle="normal"
-
                 android:visibility="@{hintvisble ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toTopOf="@id/tv_purpose"
                 app:layout_constraintEnd_toStartOf="@+id/iv_arrow"
@@ -65,7 +64,7 @@
                 android:fontFamily="@font/aspira_demi"
                 android:text="@{model.name}"
                 android:textColor="@color/woodsmoke"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/iv_arrow"
@@ -75,8 +74,8 @@
 
             <ImageView
                 android:id="@+id/iv_arrow"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
                 android:layout_marginEnd="@dimen/_6sdp"
                 android:contentDescription="TODO"
                 android:src="@drawable/ic_baseline_navigate_next_24"
@@ -88,10 +87,10 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_wallat_icon2"
 
-                android:layout_width="@dimen/_34sdp"
-                android:layout_height="@dimen/_34sdp"
-                android:layout_marginVertical="@dimen/_20sdp"
-                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginVertical="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_18sdp"
                 android:background="@color/bombay"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_baseline_search_24"
@@ -108,7 +107,7 @@
                 android:fontFamily="@font/aspira_demi"
                 android:text="@{model.name}"
                 android:textColor="@color/woodsmoke"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_wallat_icon2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -126,14 +125,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_itemslist"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.8"
+                app:layout_constraintHeight_max="@dimen/_225sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/bottom_guid_line"
-                tools:itemCount="8"
+                tools:itemCount="20"
                 tools:listitem="@layout/purpose_list_item" />
 
 

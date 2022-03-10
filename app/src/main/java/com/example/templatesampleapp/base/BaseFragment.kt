@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.example.templatesampleapp.model.uimodel.ToolBarRef
+import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import com.example.templatesampleapp.ui.activmain.MainActivity
-import com.example.templatesampleapp.ui.activmain.MainViewModel
 
 abstract class BaseFragment<T : ViewDataBinding>(private var layoutId: Int) : Fragment() {
     lateinit var binding: T
@@ -34,5 +33,5 @@ abstract class BaseFragment<T : ViewDataBinding>(private var layoutId: Int) : Fr
         super.onResume()
         (activity as MainActivity).binding.topBarMain.toolbar=getToolbar()
     }
-    abstract fun getToolbar():ToolBarRef
+    abstract fun getToolbar():ToolBarModel
 }
