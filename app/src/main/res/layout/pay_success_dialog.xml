@@ -206,7 +206,7 @@
                 android:textColor="@color/black"
                 app:backgroundTint="@color/mischka"
                 app:cornerRadius="@dimen/_30sdp"
-                app:icon="@drawable/icon_add"
+                app:icon="@drawable/icon_add_share"
                 app:iconGravity="end"
                 app:iconTintMode="multiply"
                 app:layout_constraintBottom_toBottomOf="parent"

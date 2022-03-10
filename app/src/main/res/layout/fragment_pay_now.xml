@@ -83,6 +83,7 @@
                 layout="@layout/cradit_card_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/expand_purpose_view"
                 android:layout_marginTop="@dimen/_8sdp"
                 app:datamodel="@{datamodel}"
 

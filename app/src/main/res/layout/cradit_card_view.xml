@@ -26,12 +26,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+
         android:layout_height="@dimen/_204sdp"
         android:background="@drawable/card_bg"
         app:cardCornerRadius="@dimen/_30sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            tools:showIn="@layout/fragment_pay_now"
             android:layout_height="match_parent"
             android:background="@drawable/card_bg"
             android:paddingVertical="@dimen/_8sdp">
@@ -119,8 +121,12 @@
                 android:text="@{datamodel.bankName}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/end_guide"
                 app:layout_constraintStart_toStartOf="@id/start_guide"
-                app:layout_constraintTop_toBottomOf="@id/tv_bnk" />
+                app:layout_constraintTop_toBottomOf="@id/tv_bnk"
+                app:layout_constraintVertical_bias="0.110000014"
+                tools:text="sdlkfjsdlfkjdslfjsdlfkjdslkf" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/end_guide"
