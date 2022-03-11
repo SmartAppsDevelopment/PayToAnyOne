@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="toolbar_margin_start">@dimen/_16sdp</dimen>
-    <dimen name="toolbar_margin_end">@dimen/_16sdp</dimen>
+    <dimen name="toolbar_margin_start">0dp</dimen>
+    <dimen name="toolbar_margin_end">0dp</dimen>
+
+    <dimen name="toolbar_margin_start_inside">@dimen/_16sdp</dimen>
+    <dimen name="toolbar_margin_end_inside">@dimen/_16sdp</dimen>
+
     <dimen name="toolbar_margin_top">@dimen/_16sdp</dimen>
     <dimen name="toolbar_margin_bottom">@dimen/_8sdp</dimen>
 

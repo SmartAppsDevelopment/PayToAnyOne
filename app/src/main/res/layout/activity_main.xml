@@ -31,6 +31,7 @@
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+
                app:layout_constraintLeft_toLeftOf="@id/start_guide"
                 app:layout_constraintRight_toRightOf="@id/end_guide"
                 app:layout_constraintTop_toBottomOf="@id/top_bar_main"

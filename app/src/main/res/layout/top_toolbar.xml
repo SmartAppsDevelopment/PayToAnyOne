@@ -11,6 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/toolbar_margin_start_inside"
+        android:paddingEnd="@dimen/toolbar_margin_end_inside"
         android:paddingBottom="@dimen/_16sdp">
 
         <com.google.android.material.imageview.ShapeableImageView

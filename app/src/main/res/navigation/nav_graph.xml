@@ -12,10 +12,7 @@
         <action
             android:id="@+id/action_payeesDetailFragment_to_payeesDetailsFragment"
             app:destination="@id/payeesDetailsFragment"
-            app:enterAnim="@anim/enter_from_right"
-            app:exitAnim="@anim/exit_to_left"
-            app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            />
     </fragment>
     <fragment
         android:id="@+id/emptyFragment"
@@ -39,10 +36,7 @@
         <action
             android:id="@+id/action_payeesDetailsFragment_to_payNowFragment"
             app:destination="@id/payNowFragment"
-            app:enterAnim="@anim/enter_from_right"
-            app:exitAnim="@anim/exit_to_left"
-            app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+           />
     </fragment>
     <fragment
         android:id="@+id/payNowFragment"
@@ -56,10 +50,7 @@
         <action
             android:id="@+id/action_payNowFragment_to_amountFragment"
             app:destination="@id/amountFragment"
-            app:enterAnim="@anim/enter_from_right"
-            app:exitAnim="@anim/exit_to_left"
-            app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+           />
     </fragment>
     <fragment
         android:id="@+id/amountFragment"
@@ -78,11 +69,11 @@
         <action
             android:id="@+id/action_amountFragment_to_reviewPaymentFragment"
             app:destination="@id/reviewPaymentFragment"
+            app:popExitAnim="@anim/exit_to_right"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
-            app:launchSingleTop="true"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"
+            app:launchSingleTop="true"
             app:popUpTo="@id/payeesDetailFragment"
             app:popUpToInclusive="false" />
         <argument

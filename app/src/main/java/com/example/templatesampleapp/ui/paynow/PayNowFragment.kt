@@ -53,7 +53,6 @@ class PayNowFragment :
             val bol = binding.isAccViewExpanded ?: false
             binding.isAccViewExpanded = !bol
             //  binding.expandPurposeView.root.visibility= if(bol) View.VISIBLE else View.GONE
-
         }
         viewModel.viewModelScope.launch {
             observeAccountChange()
@@ -97,12 +96,9 @@ class PayNowFragment :
         }
         viewModel.currentTransPurpose.observe(viewLifecycleOwner) {
             binding.expandPurposeView.model = it
-
             if (binding.isPurposeViewExpanded == true)
                 binding.expandPurposeView.root.callOnClick()
-
         }
-
 
         viewModel.getDataFromLocalDb()
         viewModel.uiUpdates.collect { it ->

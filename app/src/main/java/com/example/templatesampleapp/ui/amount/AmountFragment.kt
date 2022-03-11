@@ -52,7 +52,7 @@ class AmountFragment :
             )
             dir.transAaccount = transData.transAaccount
             dir.transPurpose = transData.transPurpose
-            findNavController().safeNavigate(dir)
+            findNavController().navigate(dir)
         }
 
         edtText.visibility = View.GONE

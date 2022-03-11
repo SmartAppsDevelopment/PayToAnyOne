@@ -98,8 +98,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
                 android:layout_marginEnd="@dimen/_6sdp"
                 android:src="@drawable/ic_baseline_navigate_next_24"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -118,7 +118,7 @@
                 android:layout_height="@dimen/_34sdp"
                 app:layout_constraintEnd_toStartOf="@id/iv_wallat_icon2"
 
-                android:background="@color/bombay"
+                android:background="@color/mischka"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_baseline_search_24"
                 app:layout_constraintBottom_toBottomOf="@id/bottom_guid_line"
@@ -131,7 +131,7 @@
                 android:layout_width="@dimen/_34sdp"
                 android:layout_height="@dimen/_34sdp"
                 android:layout_marginVertical="@dimen/_20sdp"
-                android:background="@color/bombay"
+                android:background="@color/mischka"
                 android:scaleType="centerInside"
                 android:layout_marginStart="@dimen/_4sdp"
                 android:src="@drawable/icon_tab_bar_accounts24"

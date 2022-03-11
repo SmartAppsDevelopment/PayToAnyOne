@@ -69,7 +69,8 @@ class PayNowViewModel @Inject constructor(
     suspend fun getPurposeDataFromLocalDb() {
         uiUpdatesPurposeItem.emit(ResponseState.Loading())
         repository.getAllTransPurposeList().collect {accountList->
-            currentTransPurpose.value= PurposeListItem(Constants.PURPOSE_HEADING)
+
+            currentTransPurpose.value= PurposeListItem(accountList.get(0).name?:Constants.PURPOSE_HEADING)
             uiUpdatesPurposeItem.emit(ResponseState.Success(accountList))
         }
     }

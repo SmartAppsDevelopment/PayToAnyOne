@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/concrete"
+        android:paddingStart="@dimen/toolbar_margin_start_inside"
+        android:paddingEnd="@dimen/toolbar_margin_end_inside"
         tools:context=".ui.frag_payes.MyPayeesFragment">
 
         <TextView

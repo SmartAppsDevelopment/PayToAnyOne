@@ -21,12 +21,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:background="@color/concrete"
+            android:paddingStart="@dimen/toolbar_margin_start_inside"
+            android:paddingEnd="@dimen/toolbar_margin_end_inside"
+            android:clipToPadding="false"
             android:layout_height="wrap_content">
 
             <include
                 layout="@layout/accverify_cardview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_16sdp"
                 app:datamodel="@{dataModel.accCardViewRef}"
                 app:layout_constraintBottom_toTopOf="@+id/tv_amount"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +48,7 @@
                 android:text="@{dataModel.amount}"
                 android:textAlignment="textStart"
                 android:textColor="@color/woodsmoke"
+                android:translationZ="@dimen/_4sdp"
                 android:textSize="@dimen/_28sdp"
                 app:layout_constraintBottom_toTopOf="@id/btn_proceed_to_pay"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +60,7 @@
                 android:layout_width="@dimen/_100sdp"
                 app:layout_constraintBaseline_toBaselineOf="@id/tv_amount"
                 android:layout_height="wrap_content"
+                android:translationZ="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_6sdp"
                 android:fontFamily="@font/aspira_demi"
                 android:textAlignment="textEnd"
@@ -80,6 +86,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_rps" />
+            <View
+                android:id="@+id/view_ref"
+                android:layout_marginLeft="-25dp"
+                android:layout_marginRight="-25dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:background="@color/white"
+                android:paddingBottom="@dimen/_20sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_amount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

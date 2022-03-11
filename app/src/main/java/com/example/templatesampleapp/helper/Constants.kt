@@ -1,7 +1,7 @@
 package com.example.templatesampleapp.helper
 
 object  Constants {
-    val BASE_URL=""
-    val PURPOSE_HEADING="Select Purpose"
+    const val BASE_URL=""
+    const val PURPOSE_HEADING="Select Purpose"
 }
 

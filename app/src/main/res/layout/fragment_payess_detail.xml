@@ -12,6 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingStart="@dimen/toolbar_margin_start_inside"
+        android:paddingEnd="@dimen/toolbar_margin_end_inside"
         android:background="@color/concrete"
         tools:context=".ui.payeedetails.PayeesDetailsFragment">
 

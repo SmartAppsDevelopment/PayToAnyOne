@@ -14,7 +14,7 @@ import com.example.templatesampleapp.model.Payees
  * How to impl Generic Adapter in whole application
  * you may delete it when Impl this template in your project
  */
-class PayeesitemsAdapter(var singleItemClickListner:(Payees,Int)->Unit) : BaseListAdapter<Payees, PayeesListItemBinding, PayeesItemViewHolder>() {
+class PayeesItemsAdapter(private var singleItemClickListner:(Payees, Int)->Unit) : BaseListAdapter<Payees, PayeesListItemBinding, PayeesItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup,inflater: LayoutInflater, viewType: Int): PayeesItemViewHolder {
         val binding=
             DataBindingUtil.inflate<PayeesListItemBinding>(inflater, R.layout.payees_list_item,parent,false)
