@@ -20,7 +20,7 @@ class ReviewPaymentFragment :
     BaseFragment<FragmentReviewpaymentBinding>(R.layout.fragment_reviewpayment) {
 
     override val viewModel by viewModels<ReviewPaymentViewModel>()
-    val accountDetails by navArgs<ReviewPaymentFragmentArgs>()
+    private val accountDetails by navArgs<ReviewPaymentFragmentArgs>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,7 +40,7 @@ class ReviewPaymentFragment :
         }
         with(accountDetails) {
             binding.dataModel =
-                viewModel.getPaymentModel(payees, transAaccount!!, transPurpose!!, amount!!) {
+                viewModel.getPaymentModel(payees, transAaccount!!, amount!!) {
 
                 }
         }

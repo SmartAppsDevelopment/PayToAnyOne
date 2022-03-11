@@ -18,9 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
+        android:background="@color/concrete"
         android:paddingStart="@dimen/toolbar_margin_start_inside"
         android:paddingEnd="@dimen/toolbar_margin_end_inside"
-        android:background="@color/concrete"
         tools:context=".ui.amount.AmountFragment">
 
         <TextView
@@ -31,21 +31,23 @@
             android:textColor="@color/santas_grey"
             android:textSize="@dimen/_14ssp"
             android:textStyle="normal"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Name of Payee" />
+
         <TextView
             android:id="@+id/tv_rs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/aspira_demi"
             android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv_amount"
+            android:text="@string/rs"
+            android:layout_marginEnd="@dimen/_6sdp"
             android:textColor="@color/santas_grey"
             android:textSize="@dimen/_12ssp"
             android:textStyle="normal"
-            android:text="@string/rs"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_amount"
             app:layout_constraintBottom_toBottomOf="@+id/tv_amount"
             app:layout_constraintEnd_toStartOf="@id/tv_amount"
             app:layout_constraintHorizontal_bias="0.50"
@@ -58,14 +60,14 @@
         <com.example.templatesampleapp.customview.FixedKeyboardEditText
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
-            android:maxWidth="@dimen/_140sdp"
-            android:hint="@string/_0"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:minWidth="@dimen/_50sdp"
             android:fontFamily="@font/aspira_demi"
             android:gravity="center_horizontal"
+            android:hint="@string/_0"
             android:inputType="number"
+            android:maxWidth="@dimen/_140sdp"
+            android:minWidth="@dimen/_50sdp"
             android:singleLine="true"
 
             android:text="@={datamodel.amount}"
@@ -80,20 +82,21 @@
 
         <TextView
             android:id="@+id/tv_addcmnt"
-            android:maxWidth="@dimen/_250sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_10sdp"
             android:background="@drawable/add_cmnt"
             android:fontFamily="@font/aspira_medium"
             android:gravity="center_horizontal"
+            android:maxWidth="@dimen/_250sdp"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/add_comment"
             android:textColor="@color/woodsmoke"
             android:textSize="@dimen/_12ssp"
-app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_amount"
-            android:text="@string/add_comment"
             tools:text="Add Comment" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_proceed_to_pay"
             android:layout_width="0dp"
@@ -101,23 +104,24 @@ app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="@dimen/_30sdp"
             android:fontFamily="@font/aspira_demi"
             android:text="@string/proceed_to_pay"
-            app:cornerRadius="@dimen/_10sdp"
             android:textAllCaps="false"
             app:backgroundTint="@color/lochmara"
+            app:cornerRadius="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <EditText
             android:id="@+id/edt_text"
 
-            android:background="@color/white"
-            tools:text="@string/continueuser"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_proceed_to_pay"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_proceed_to_pay"
+            tools:text="@string/continueuser" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -1,12 +1,9 @@
 package com.example.templatesampleapp.bindings
 
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.MutableLiveData
-import androidx.recyclerview.widget.RecyclerView
 import com.example.templatesampleapp.helper.AppBaseSetting
 import com.google.android.material.imageview.ShapeableImageView
 import com.squareup.picasso.Picasso
-
 
 
 @BindingAdapter( "setDrawIcon")

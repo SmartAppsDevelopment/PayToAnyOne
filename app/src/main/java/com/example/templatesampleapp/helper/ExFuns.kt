@@ -1,10 +1,9 @@
 package com.example.templatesampleapp.helper
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
@@ -15,7 +14,6 @@ import com.example.templatesampleapp.model.Accounts
 import com.example.templatesampleapp.model.Payees
 import com.example.templatesampleapp.model.uimodel.AccountsListItem
 import com.example.templatesampleapp.model.uimodel.CardViewRef
-import java.lang.Exception
 import java.text.SimpleDateFormat
 
 
@@ -43,7 +41,7 @@ fun String.splitNameToCapital(): String {
     var name = ""
     array.forEachIndexed { index, str ->
         if (str.isNotEmpty())
-            name += str.toCharArray().get(0).uppercase()
+            name += str.toCharArray()[0].uppercase()
     }
     return name
 }
@@ -73,17 +71,18 @@ fun Int?.orEmpty(default: Int = 0): Int {
     return this ?: default
 }
 
-fun EditText.showKeyboard() {
-    if (requestFocus()) {
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        val showSoftInput = imm.showSoftInput(this, InputMethodManager.SHOW_FORCED)
-    }
-}
+//fun EditText.showKeyboard() {
+//    if (requestFocus()) {
+//       /// val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//     ///   val showSoftInput = imm.showSoftInput(this, InputMethodManager.SHOW_FORCED)
+//    }
+//}
 
 fun Accounts.toAccountListItem(): AccountsListItem = AccountsListItem(name, accountNumber, amount)
 
 fun AccountsListItem.toAccountItem() = Accounts(name, accountNumber, amount)
 
+@SuppressLint("SimpleDateFormat")
 fun getCurrentDateTime(): String {
     val date = System.currentTimeMillis()
     return SimpleDateFormat("dd MMMM, yyyy").format(date)

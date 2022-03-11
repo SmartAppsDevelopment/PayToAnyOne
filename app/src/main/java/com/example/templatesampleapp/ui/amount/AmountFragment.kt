@@ -13,7 +13,6 @@ import com.example.templatesampleapp.helper.*
 import com.example.templatesampleapp.model.uimodel.AmountFragmentModel
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.Exception
 
 
 @AndroidEntryPoint
@@ -62,7 +61,7 @@ class AmountFragment :
         tvAddcmnt.setOnClickListener {
             with(binding) {
                 edtText.visibility = View.VISIBLE
-                edtText.showKeyboard()
+                //edtText.showKeyboard()
             }
         }
         edtText.addTextChangedListener {

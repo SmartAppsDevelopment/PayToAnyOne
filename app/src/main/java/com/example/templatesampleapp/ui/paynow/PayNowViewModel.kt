@@ -40,10 +40,6 @@ class PayNowViewModel @Inject constructor(
     var isContinueEnabled = MutableLiveData(false)
 
     var currentTransPurpose = MutableLiveData<PurposeListItem>()
-        set(value) {
-           /// savedStateHandle.set(USER_ACCOUNT_PURPOSE, value)
-            field = value
-        }
         get() = savedStateHandle.getLiveData(USER_ACCOUNT_PURPOSE)
 
     var currentSelectAccount = MutableLiveData<Accounts>()
@@ -62,7 +58,7 @@ class PayNowViewModel @Inject constructor(
     suspend fun getDataFromLocalDb() {
         uiUpdates.emit(ResponseState.Loading())
         repository.getAllAccountList().collect {
-            currentSelectAccount.value=(it.get(0)!!)
+            currentSelectAccount.value=(it[0])
             uiUpdates.emit(ResponseState.Success(it))
         }
     }

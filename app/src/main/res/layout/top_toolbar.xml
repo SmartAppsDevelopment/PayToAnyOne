@@ -45,7 +45,7 @@
             android:textColor="@color/black"
             app:backgroundTint="@color/mischka"
             android:layout_marginStart="@dimen/_8sdp"
-            app:icon="@drawable/ic_baseline_search_24"
+            app:icon="@drawable/ic_baseline_search_24_black"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconSize="@dimen/_16sdp"

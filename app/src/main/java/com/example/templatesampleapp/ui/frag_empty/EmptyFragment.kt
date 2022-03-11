@@ -1,11 +1,10 @@
 package com.example.templatesampleapp.ui.frag_empty
 
-import androidx.lifecycle.*
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.base.BaseFragment
 import com.example.templatesampleapp.base.BaseViewModel
 import com.example.templatesampleapp.databinding.FragmentMyPayeesBinding
-import com.example.templatesampleapp.helper.*
+import com.example.templatesampleapp.helper.showLog
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
 

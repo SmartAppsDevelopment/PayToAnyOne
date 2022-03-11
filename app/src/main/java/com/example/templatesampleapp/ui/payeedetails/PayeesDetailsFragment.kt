@@ -3,13 +3,14 @@ package com.example.templatesampleapp.ui.payeedetails
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.base.BaseFragment
 import com.example.templatesampleapp.databinding.FragmentPayessDetailBinding
-import com.example.templatesampleapp.helper.*
+import com.example.templatesampleapp.helper.safeNavigate
+import com.example.templatesampleapp.helper.showLog
+import com.example.templatesampleapp.helper.toCardViewRef
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -4,12 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.templatesampleapp.R
-import com.example.templatesampleapp.adapter.holders.AccountItemViewHolder
 import com.example.templatesampleapp.adapter.holders.PurposeItemViewHolder
 import com.example.templatesampleapp.base.BaseListAdapter
-import com.example.templatesampleapp.databinding.AccountListItemBinding
 import com.example.templatesampleapp.databinding.PurposeListItemBinding
-import com.example.templatesampleapp.model.uimodel.AccountsListItem
 import com.example.templatesampleapp.model.uimodel.PurposeListItem
 
 /**
