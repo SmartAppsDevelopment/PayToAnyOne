@@ -48,6 +48,7 @@
             <TextView
                 android:id="@+id/tv_title"
                 style="@style/payees_item_title"
+                android:fontFamily="@font/aspira_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_13ssp"
@@ -62,6 +63,7 @@
                 tools:text="This is Sample Text For "
                 android:id="@+id/tv_number"
                 style="@style/payees_item_number"
+                android:fontFamily="@font/aspira_demi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{model.accountNumber}"
@@ -74,6 +76,7 @@
                 android:id="@+id/tv_pkr"
                 tools:text="This is Sample Text For "
                 style="@style/payees_item_bank"
+                android:fontFamily="@font/aspira_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{model.bankName}"

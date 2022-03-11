@@ -15,6 +15,7 @@ import com.example.templatesampleapp.model.Accounts
 import com.example.templatesampleapp.model.Payees
 import com.example.templatesampleapp.model.uimodel.AccountsListItem
 import com.example.templatesampleapp.model.uimodel.CardViewRef
+import java.lang.Exception
 import java.text.SimpleDateFormat
 
 
@@ -86,5 +87,16 @@ fun AccountsListItem.toAccountItem() = Accounts(name, accountNumber, amount)
 fun getCurrentDateTime(): String {
     val date = System.currentTimeMillis()
     return SimpleDateFormat("dd MMMM, yyyy").format(date)
+}
+
+fun String.isAmountVerified():Int{
+    val amountCurrent = try {
+        Integer.parseInt(this)
+    } catch (e: Exception) {
+        0
+    }
+    return if (amountCurrent > 0)
+        amountCurrent
+    else 0
 }
 

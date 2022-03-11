@@ -41,7 +41,7 @@ class PayNowViewModel @Inject constructor(
 
     var currentTransPurpose = MutableLiveData<PurposeListItem>()
         set(value) {
-            savedStateHandle.set(USER_ACCOUNT_PURPOSE, value)
+           /// savedStateHandle.set(USER_ACCOUNT_PURPOSE, value)
             field = value
         }
         get() = savedStateHandle.getLiveData(USER_ACCOUNT_PURPOSE)
@@ -69,8 +69,8 @@ class PayNowViewModel @Inject constructor(
     suspend fun getPurposeDataFromLocalDb() {
         uiUpdatesPurposeItem.emit(ResponseState.Loading())
         repository.getAllTransPurposeList().collect {accountList->
-
-            currentTransPurpose.value= PurposeListItem(accountList.get(0).name?:Constants.PURPOSE_HEADING)
+            currentTransPurpose.value= PurposeListItem(Constants.PURPOSE_HEADING)
+           isPurposeSelected = false
             uiUpdatesPurposeItem.emit(ResponseState.Success(accountList))
         }
     }

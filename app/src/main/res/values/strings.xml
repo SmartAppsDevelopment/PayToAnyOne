@@ -30,4 +30,5 @@
     <string name="this_message_can_be_described_in_detail">This message can be described in detail.</string>
     <string name="_12_november_2020">12 November, 2020</string>
     <string name="paid_to">Paid to</string>
+    <string name="enter_amount">Enter Amount</string>
 </resources>

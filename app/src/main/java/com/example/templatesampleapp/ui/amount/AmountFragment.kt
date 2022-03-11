@@ -9,12 +9,11 @@ import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.base.BaseFragment
 import com.example.templatesampleapp.databinding.FragmentAmountBinding
-import com.example.templatesampleapp.helper.safeNavigate
-import com.example.templatesampleapp.helper.showKeyboard
-import com.example.templatesampleapp.helper.showLog
+import com.example.templatesampleapp.helper.*
 import com.example.templatesampleapp.model.uimodel.AmountFragmentModel
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Exception
 
 
 @AndroidEntryPoint
@@ -33,7 +32,7 @@ class AmountFragment :
 
     private fun showKeyBoard() {
         binding.tvAmount.focusAndShowKeyboard()
-      //  requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        //  requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
     }
 
     private fun attachLister() = with(binding) {
@@ -52,7 +51,11 @@ class AmountFragment :
             )
             dir.transAaccount = transData.transAaccount
             dir.transPurpose = transData.transPurpose
-            findNavController().navigate(dir)
+
+            if (amountFrag.amount.isAmountVerified()>0)
+                findNavController().navigate(dir)
+            else
+                requireContext().showToast(getString(R.string.enter_amount))
         }
 
         edtText.visibility = View.GONE
