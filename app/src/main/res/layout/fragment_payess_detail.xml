@@ -22,7 +22,7 @@
             app:datamodel="@{datamodel}"
             layout="@layout/cradit_card_view"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_170sdp"
             app:layout_constraintEnd_toEndOf="@id/end_guide"
             app:layout_constraintStart_toStartOf="@id/start_guide"
             app:layout_constraintTop_toTopOf="parent" />
@@ -92,7 +92,7 @@
             android:id="@+id/btn_pay_now"
             android:layout_width="0dp"
             android:layout_height="@dimen/_44sdp"
-            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_17sdp"
             android:fontFamily="@font/aspira_demi"
             android:text="@string/pay_now"
             app:cornerRadius="@dimen/_10sdp"

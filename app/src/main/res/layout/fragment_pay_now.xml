@@ -86,7 +86,7 @@
                 android:id="@+id/card_view"
                 layout="@layout/cradit_card_view"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_176sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 app:datamodel="@{datamodel}"
                 app:layout_constraintBottom_toTopOf="@id/expand_purpose_view"
@@ -100,11 +100,11 @@
                 layout="@layout/expandable_purpose_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
-
+                android:layout_marginTop="@dimen/_15sdp"
+android:layout_marginBottom="@dimen/_15sdp"
                 app:hintvisble="@{viewmodel.purposeSelected}"
                 app:isViewExpanded="@{isPurposeViewExpanded}"
-                app:layout_constraintBottom_toTopOf="@id/btn_continue"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_view" />
@@ -114,6 +114,7 @@
                 android:layout_width="0dp"
                 android:enabled="false"
                 android:layout_height="@dimen/_44sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginBottom="@dimen/_17sdp"
                 android:fontFamily="@font/aspira_demi"
                 android:text="@string/continueuser"
@@ -161,7 +162,7 @@
 
                 android:layout_height="wrap_content"
                 android:visibility="@{isPurposeViewExpanded ? View.GONE : View.VISIBLE}"
-                app:constraint_referenced_ids="payto,card_view,payfrom" />
+                app:constraint_referenced_ids="payto,card_view,payfrom,expand_acc_view" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

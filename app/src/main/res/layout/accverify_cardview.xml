@@ -38,8 +38,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_wallatpic"
-                android:layout_width="@dimen/payee_list_item_iv_w"
-                android:layout_height="@dimen/payee_list_item_iv_h"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
                 android:background="@color/mischka"
                 android:scaleType="center"
                 android:src="@drawable/icon_tab_bar_accounts"
@@ -180,8 +180,8 @@
                 style="@style/circle_view_style" />
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_user_icon"
-                android:layout_width="@dimen/payee_list_item_iv_w"
-                android:layout_height="@dimen/payee_list_item_iv_h"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_14ssp"
                 android:background="@color/white"
                 android:scaleType="center"

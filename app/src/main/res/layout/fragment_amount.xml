@@ -101,7 +101,7 @@
             android:id="@+id/btn_proceed_to_pay"
             android:layout_width="0dp"
             android:layout_height="@dimen/_44sdp"
-            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_17sdp"
             android:fontFamily="@font/aspira_demi"
             android:text="@string/proceed_to_pay"
             android:textAllCaps="false"
@@ -113,7 +113,7 @@
 
         <EditText
             android:id="@+id/edt_text"
-
+android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"

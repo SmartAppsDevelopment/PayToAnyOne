@@ -26,8 +26,9 @@
 
             <ImageView
                 android:id="@+id/iv_cross"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:padding="@dimen/_3sdp"
+                android:layout_width="@dimen/_18ssp"
+                android:layout_height="@dimen/_18ssp"
                 android:layout_margin="@dimen/_20ssp"
                 android:background="@drawable/cross_dialog"
                 android:src="@drawable/ic_baseline_clear_24"
@@ -195,8 +196,11 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_edit"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/aspira_demi"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_9sdp"
                 android:layout_marginBottom="@dimen/_17sdp"
                 android:layout_marginHorizontal="@dimen/_6sdp"
                 android:clickable="true"

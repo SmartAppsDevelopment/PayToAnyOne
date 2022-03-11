@@ -27,7 +27,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
 
-        android:layout_height="@dimen/_204sdp"
+        android:layout_height="@dimen/_180sdp"
         android:background="@drawable/card_bg"
         app:cardCornerRadius="@dimen/_30sdp">
 
@@ -35,8 +35,8 @@
             android:layout_width="match_parent"
             tools:showIn="@layout/fragment_pay_now"
             android:layout_height="match_parent"
-            android:background="@drawable/card_bg"
-            android:paddingVertical="@dimen/_8sdp">
+            android:paddingTop="@dimen/_16sdp"
+            android:background="@drawable/card_bg">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_user_icon"
@@ -63,6 +63,7 @@
             <TextView
                 android:id="@+id/tv_user_name"
                 android:layout_width="0dp"
+                tools:text="Hello this ism aner "
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/aspira_demi"
@@ -91,6 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/line_margin"
+                tools:text="Hello this is sample"
                 android:fontFamily="@font/aspira_medium"
                 android:text="@{datamodel.accNo}"
                 android:textColor="@color/white"
@@ -117,6 +119,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/line_margin"
+
                 android:fontFamily="@font/aspira_medium"
                 android:text="@{datamodel.bankName}"
                 android:textColor="@color/white"
@@ -144,8 +147,9 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:letterSpacing="0"
                 android:layout_marginHorizontal="@dimen/_6sdp"
                 android:clickable="true"
                 android:focusable="true"
