@@ -51,6 +51,7 @@
                 android:id="@+id/tv_acc_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
                 android:fontFamily="@font/aspira_demi"
                 android:text="@{datamodel.payFromName}"
                 android:textColor="@color/woodsmoke"
