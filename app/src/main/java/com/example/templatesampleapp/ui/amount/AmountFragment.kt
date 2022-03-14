@@ -86,6 +86,10 @@ class AmountFragment :
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")
-    })
+    }).apply {
+        hideSideIcon=false
+        sideButtonText="Edit"
+        sideButtonIcon=R.drawable.icon_edit
+    }
 
 }

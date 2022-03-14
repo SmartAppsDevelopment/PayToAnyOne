@@ -32,26 +32,30 @@ class ReviewPaymentFragment :
                     accountDetails.payees.name,
                     accountDetails.transAaccount!!.name,
                     accountDetails.amount ?: "0"
-                ) { requireContext().showToast("Share Click") })
+                ) { requireContext().showToast("Share Click") }.apply {
+                    accountNo = accountDetails.transAaccount?.accountNumber ?: ""
+                })
                 .show(
-                requireActivity().supportFragmentManager,
-                "SdkReviewPayment"
-            )
+                    requireActivity().supportFragmentManager,
+                    "SdkReviewPayment"
+                )
         }
         with(accountDetails) {
             binding.dataModel =
                 viewModel.getPaymentModel(payees, transAaccount!!, amount!!) {
-
                 }
         }
-
     }
 
     override fun getToolbar() = ToolBarModel("Review\nPayment", searchClick = {
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")
-    })
+    }).apply {
+        hideSideIcon=false
+        sideButtonText="Schedule"
+        sideButtonIcon=R.drawable.icon_schedule_pay
+    }
 
 
 }

@@ -1,3 +1,13 @@
 package com.example.templatesampleapp.model.uimodel
 
-data class ToolBarModel(var title: String, var searchClick: () -> Unit, var userImgClick: () -> Unit)
+import com.example.templatesampleapp.R
+
+data class ToolBarModel(var title: String, var searchClick: () -> Unit, var userImgClick: () -> Unit){
+    var hideSearchIcon=true
+    var hideSideIcon=true
+    set(value) {
+        field=true
+    }
+    var sideButtonText=" "
+    var sideButtonIcon:Int= R.drawable.icon_edit
+}

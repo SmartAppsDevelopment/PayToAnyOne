@@ -27,6 +27,7 @@ class MyPayeesFragment : BaseFragment<FragmentMyPayeesBinding>(R.layout.fragment
             viewModel.getDataFromLocalDb()
         }
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvListItems.adapter = PayeesItemsAdapter { payees, _ ->
@@ -79,7 +80,12 @@ class MyPayeesFragment : BaseFragment<FragmentMyPayeesBinding>(R.layout.fragment
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")
-    })
+    }).apply {
+        hideSearchIcon = false
+        hideSideIcon=false
+        sideButtonText="Add"
+        sideButtonIcon=R.drawable.icon_add
+    }
 
 
 }

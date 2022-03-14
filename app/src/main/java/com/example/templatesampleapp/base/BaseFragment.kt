@@ -20,7 +20,7 @@ abstract class BaseFragment<T : ViewDataBinding>(private var layoutId: Int) : Fr
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutId, null, false)
-        binding.lifecycleOwner=viewLifecycleOwner
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -31,7 +31,17 @@ abstract class BaseFragment<T : ViewDataBinding>(private var layoutId: Int) : Fr
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).binding.topBarMain.toolbar=getToolbar()
+        with((activity as MainActivity).binding) {
+            topBarMain.toolbar = getToolbar().apply {
+                if (hideSearchIcon) {
+                   topBarMain.ivSearchIcon.visibility=View.INVISIBLE
+                }else{
+                    topBarMain.ivSearchIcon.visibility=View.VISIBLE
+                }
+            }
+        }
+
     }
-    abstract fun getToolbar():ToolBarModel
+
+    abstract fun getToolbar(): ToolBarModel
 }
