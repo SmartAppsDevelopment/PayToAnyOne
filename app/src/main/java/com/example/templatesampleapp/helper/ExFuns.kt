@@ -62,21 +62,10 @@ fun NavController.safeNavigate(nav: NavDirections) {
 fun getNavAnimations() =
     NavOptions.Builder().setEnterAnim(R.anim.enter_from_right).setExitAnim(R.anim.exit_to_left)
         .setPopEnterAnim(R.anim.enter_from_left).setPopExitAnim(R.anim.exit_to_right)
-//app:enterAnim="@anim/enter_from_right"
-//app:exitAnim="@anim/exit_to_left"
-//app:popEnterAnim="@anim/enter_from_left"
-//app:popExitAnim="@anim/exit_to_right"
 
 fun Int?.orEmpty(default: Int = 0): Int {
     return this ?: default
 }
-
-//fun EditText.showKeyboard() {
-//    if (requestFocus()) {
-//       /// val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//     ///   val showSoftInput = imm.showSoftInput(this, InputMethodManager.SHOW_FORCED)
-//    }
-//}
 
 fun Accounts.toAccountListItem(): AccountsListItem = AccountsListItem(name, accountNumber, amount)
 
