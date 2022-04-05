@@ -23,15 +23,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.templatesampleapp.R
-import com.example.templatesampleapp.helper.ResponseState
-import com.example.templatesampleapp.helper.ShowToast
-import com.example.templatesampleapp.helper.getFontAspiraDem
-import com.example.templatesampleapp.helper.getFontAspiraMed
+import com.example.templatesampleapp.helper.*
 import com.example.templatesampleapp.model.Accounts
 import com.example.templatesampleapp.model.uimodel.PurposeListItem
 import com.example.templatesampleapp.ui.paynow.PayNowViewModel
-import kotlinx.coroutines.flow.stateIn
-import javax.inject.Inject
 
 class ExpandablePurposeAccountView() {
 
@@ -60,12 +55,18 @@ class ExpandablePurposeAccountView() {
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     fun ComponentPurposeListItem() {
-        val listOfItems = remember{
+
+//        var isCollapsed by remember {
+//            mutableStateOf(isCollapsedAllow)
+//        }
+        val isCollapsed =  viewModel.isPurposeViewExpended.collectAsState()
+
+        val listOfItems = remember {
             mutableStateListOf<PurposeListItem>()
 //            emptyList<PuroposeList>()
         }
         viewModel.uiUpdatesPurposeItem
-            .collectAsState().value.let{
+            .collectAsState().value.let {
                 when (it) {
                     is ResponseState.Error -> {
                     }
@@ -77,7 +78,7 @@ class ExpandablePurposeAccountView() {
                         val mappedList = it.data!!.map {
                             it!!
 
-                        }.let { listOfAcc->
+                        }.let { listOfAcc ->
                             listOfItems.addAll(listOfAcc)
                         }
 //                        updateDataInExpandViewPurpose(mappedList)
@@ -85,16 +86,16 @@ class ExpandablePurposeAccountView() {
                 }
             }
 
-        var isCollapsed by remember {
-            mutableStateOf(true)
-        }
+//        var isCollapsed by remember {
+//            mutableStateOf(true)
+//        }
         var purposeTitle by remember {
             mutableStateOf("Select Purpose")
         }
 
         Card(
             modifier = with(Modifier) {
-                if (isCollapsed) {
+                if (isCollapsed.value) {
                     sizeIn(
                         minHeight = 60.dp,
                         maxHeight = 420.dp
@@ -110,8 +111,8 @@ class ExpandablePurposeAccountView() {
             shape = RoundedCornerShape(16.dp),
             backgroundColor = Color.White,
             onClick = {
-                val isViewCollapsed = !isCollapsed
-                isCollapsed = isViewCollapsed
+                val isViewCollapsed = !isCollapsed.value
+                viewModel.isPurposeViewExpended.value = isViewCollapsed
             }
         ) {
 
@@ -123,7 +124,7 @@ class ExpandablePurposeAccountView() {
                         .padding(10.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    AnimateContentInside(isCollapsed) {
+                    AnimateContentInside(isCollapsed.value) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_baseline_search_24_black),
                             "contentDescription",
@@ -141,7 +142,7 @@ class ExpandablePurposeAccountView() {
                             .padding(start = 18.dp)
                             .weight(1f)
                     ) {
-                        AnimateContentInside(!isCollapsed) {
+                        AnimateContentInside(!isCollapsed.value) {
                             Text(
                                 "Select Purpose",
                                 fontWeight = FontWeight.Bold,
@@ -157,7 +158,7 @@ class ExpandablePurposeAccountView() {
                             modifier = Modifier.animateContentSize()
                         )
                     }
-                    AnimateContentInside(!isCollapsed) {
+                    AnimateContentInside(!isCollapsed.value) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_baseline_navigate_next_24),
                             contentDescription = "",
@@ -184,7 +185,7 @@ class ExpandablePurposeAccountView() {
 //                        PurposeListItem("dslkfjlsdkf")
 //                    )
 //                }
-                AnimateContentInside(isCollapsed = isCollapsed) {
+                AnimateContentInside(isCollapsed = isCollapsed.value) {
                     ///  if (!isCollapsed) {
                     LazyColumn(
                         contentPadding = PaddingValues(
@@ -194,8 +195,8 @@ class ExpandablePurposeAccountView() {
                     ) {
                         items(listOfItems.size) {
                             listOfItems[it].PurposeListItemView {
-                                val isViewCollapsed = !isCollapsed
-                                isCollapsed = isViewCollapsed
+                                val isViewCollapsed = !isCollapsed.value
+                                viewModel.isPurposeViewExpended.value = isViewCollapsed
                                 purposeTitle = it
                             }
                         }
@@ -210,33 +211,38 @@ class ExpandablePurposeAccountView() {
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     fun ComponentAccountListItem() {
-//        val listOfAccounts = remember{
-//            emptyList<Accounts>()
+//        var isCollapsed by remember {
+//            mutableStateOf(isCollapsedAllow)
 //        }
-
+        var isCollapsed =viewModel.isAccountViewExpended.collectAsState()
         val listOfItems = remember {
-            mutableStateListOf(
-                Accounts("Umer Bilal", "021312012030213", "2132"),
-                Accounts("Umer Bilal", "021312012030213", "2132"),
-                Accounts("Umer Bilal", "021312012030213", "2132"),
-                Accounts("Umer Bilal", "021312012030213", "2132"),
-                Accounts("Umer Bilal", "021312012030213", "2132"),
-                Accounts("Umer Bilal", "021312012030213", "2132"),
-                Accounts("Umer Bilal", "021312012030213", "2132")
-            )
+            mutableStateListOf<Accounts>()
         }
+        viewModel.uiUpdates
+            .collectAsState().value.let {
+                when (it) {
+                    is ResponseState.Error -> {
+                    }
+                    is ResponseState.Idle -> {
+                    }
+                    is ResponseState.Loading -> {
+                    }
+                    is ResponseState.Success -> {
+//                        val mappedList = it.data!!.map {
+//                            it!!.toAccountListItem()
+//                        }
+                        listOfItems.addAll(it.data!!.map { it!! })
+                    }
+                }
+            }
 
-
-        var isCollapsed by remember {
-            mutableStateOf(true)
-        }
         var purposeTitle by remember {
             mutableStateOf("Select Purpose")
         }
         Card(
             modifier = with(Modifier)
             {
-                if (isCollapsed) {
+                if (isCollapsed.value) {
                     sizeIn(
                         minHeight = 60.dp,
                         maxHeight = 420.dp
@@ -253,8 +259,8 @@ class ExpandablePurposeAccountView() {
             backgroundColor = Color.White,
             onClick =
             {
-                val isViewCollapsed = !isCollapsed
-                isCollapsed = isViewCollapsed
+                val isViewCollapsed = !isCollapsed.value
+                viewModel.isAccountViewExpended.value = isViewCollapsed
             }
         )
         {
@@ -268,7 +274,7 @@ class ExpandablePurposeAccountView() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
 
-                    AnimateContentInside(isCollapsed) {
+                    AnimateContentInside(isCollapsed.value) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_baseline_search_24_black),
                             "contentDescription",
@@ -287,7 +293,7 @@ class ExpandablePurposeAccountView() {
                             .padding(start = 6.dp, end = 8.dp)
                             .clip(CircleShape)
                             .background(colorResource(id = R.color.mischka))
-                            .padding(4.dp)
+                            .padding(8.dp)
                             .size(28.dp)
                     )
 
@@ -296,7 +302,7 @@ class ExpandablePurposeAccountView() {
                             .padding(start = 8.dp)
                             .weight(1f)
                     ) {
-                        AnimateContentInside(!isCollapsed) {
+                        AnimateContentInside(!isCollapsed.value) {
                             Text(
                                 "Account",
                                 fontWeight = FontWeight.Bold,
@@ -313,7 +319,7 @@ class ExpandablePurposeAccountView() {
                             fontSize = 14.sp,
                             color = colorResource(id = R.color.black)
                         )
-                        AnimateContentInside(!isCollapsed) {
+                        AnimateContentInside(!isCollapsed.value) {
                             Text(
                                 "0100423401032001",
                                 fontWeight = FontWeight.Bold,
@@ -323,7 +329,7 @@ class ExpandablePurposeAccountView() {
                             )
                         }
                     }
-                    AnimateContentInside(!isCollapsed) {
+                    AnimateContentInside(!isCollapsed.value) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_baseline_navigate_next_24),
                             contentDescription = "",
@@ -334,7 +340,7 @@ class ExpandablePurposeAccountView() {
 
 
 
-                AnimateContentInside(isCollapsed = isCollapsed) {
+                AnimateContentInside(isCollapsed = isCollapsed.value) {
                     ///  if (!isCollapsed) {
                     LazyColumn(
                         contentPadding = PaddingValues(
@@ -345,8 +351,8 @@ class ExpandablePurposeAccountView() {
                         listOfItems.let { sampleItmsList ->
                             items(sampleItmsList.size) {
                                 sampleItmsList[it].AccountListItemView {
-                                    val isViewCollapsed = !isCollapsed
-                                    isCollapsed = isViewCollapsed
+                                    val isViewCollapsed = !isCollapsed.value
+                                    viewModel.isAccountViewExpended.value = isViewCollapsed
                                     purposeTitle = it.name
                                 }
                             }

@@ -96,6 +96,7 @@ class PayeesDetailsFragment : BaseFragmentCompose() {
                     topTitle.value = nam
                     acNo.value = accNo
                     bankName.value = bnknam
+
                 }.CraditCardViewUi()
                 Spacer(modifier = Modifier.size(6.dp))
                 TapAndPay()

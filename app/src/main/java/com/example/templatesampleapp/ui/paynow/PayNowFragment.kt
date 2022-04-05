@@ -5,9 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,7 +37,7 @@ import kotlinx.coroutines.launch
 class PayNowFragment : BaseFragmentCompose() {
 
     private val payeesDetails by navArgs<PayNowFragmentArgs>()
-     val viewModel by activityViewModels<PayNowViewModel>()
+    val viewModel by activityViewModels<PayNowViewModel>()
 
 
     override fun onCreateView(
@@ -39,7 +46,7 @@ class PayNowFragment : BaseFragmentCompose() {
         savedInstanceState: Bundle?
     ): View = ComposeView(requireContext()).apply {
         setContent {
-ShowMainUi()
+            ShowMainUi()
         }
     }
 
@@ -47,6 +54,7 @@ ShowMainUi()
         super.onViewCreated(view, savedInstanceState)
         viewModel.viewModelScope.launch {
             viewModel.getPurposeDataFromLocalDb()
+            viewModel.getDataFromLocalDb()
         }
 //        setCurrentUserOnCard()
 //        setCardViewData()
@@ -196,38 +204,76 @@ ShowMainUi()
     @Composable
     fun ShowMainUi() {
 
-        val standPaddingBottom=8.dp
+        var isCollapsed by remember {
+            mutableStateOf(true)
+        }
+        val standPaddingBottom = 8.dp
         val expandableView = ExpandablePurposeAccountView().apply {
             _viewModel = this@PayNowFragment.viewModel
         }
-        Column(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
-            Text(
-                text = getString(R.string.pay_from),
-                fontSize = 14.sp,
-                color = colorResource(id = R.color.santas_grey)
-            )
-            Spacer(modifier = Modifier.height(standPaddingBottom))
-            expandableView.ComponentAccountListItem()
-            Spacer(modifier = Modifier.height(standPaddingBottom))
-            Text(
-                text = getString(R.string.pat_to),
-                fontSize = 14.sp,
-                color = colorResource(id = R.color.santas_grey)
-            )
-            Spacer(modifier = Modifier.size(6.dp))
-            CraditCardView().apply {
-                val (icon, nam, accNo, bnknam) = payeesDetails.payesDetails!!
-                topTitle.value = nam
-                acNo.value = accNo
-                bankName.value = bnknam
-            }.CraditCardViewUi()
-            Spacer(modifier = Modifier.size(6.dp))
-            Text(
-                text = getString(R.string.pay_from),
-                fontSize = 14.sp,
-                color = colorResource(id = R.color.santas_grey)
-            )
+        Column {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp)
+                    .verticalScroll(
+                        rememberScrollState()
+                    ), verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                Text(
+                    text = getString(R.string.pay_from),
+                    fontSize = 14.sp,
+                    color = colorResource(id = R.color.santas_grey)
+                )
+                //  Spacer(modifier = Modifier.height(standPaddingBottom))
+                expandableView.ComponentAccountListItem()
+                //  Spacer(modifier = Modifier.height(standPaddingBottom))
+                Text(
+                    text = getString(R.string.pat_to),
+                    fontSize = 14.sp,
+                    color = colorResource(id = R.color.santas_grey)
+                )
+                //// Spacer(modifier = Modifier.size(6.dp))
+                CraditCardView().apply {
+                    val (icon, nam, accNo, bnknam) = payeesDetails.payesDetails!!
+                    iconID.value=icon.toInt()
+                    allowToShowSideButton.value=false
+                    topTitle.value = nam
+                    acNo.value = accNo
+                    bankName.value = bnknam
+                }.CraditCardViewUi(false)
+                  Spacer(modifier = Modifier.size(6.dp))
+                expandableView.ComponentPurposeListItem()
+
+            }
+            BottomButton({
+//                val dir =
+//                    PayeesDetailsFragmentDirections.actionPayeesDetailsFragmentToPayNowFragment()
+//                dir.payesDetails = payessDetails.accountDetails
+//                findNavController().safeNavigate(dir)
+            }, Modifier.padding(horizontal = 16.dp))
         }
 
     }
+
+    @Composable
+    fun BottomButton(callOnClick: () -> Unit, modifier: Modifier = Modifier) {
+        Button(
+            onClick = { callOnClick() },
+            modifier = modifier
+                .padding(bottom = 8.dp)
+                .fillMaxWidth()
+                .height(36.dp)
+                .clip(RoundedCornerShape(16.dp)),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = colorResource(
+                    id = R.color.lochmara
+                )
+            )
+        ) {
+            Text(text = "Continue", color = Color.White)
+        }
+    }
+
 }

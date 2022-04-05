@@ -11,7 +11,7 @@ android {
     compileSdk rootProject.targetSdkVersion
 
     defaultConfig {
-        applicationId "com.example.templatesampleapp"
+        applicationId "com.example.templatesampleapp.compose"
         minSdk rootProject.minSdkVersion
         targetSdk rootProject.targetSdkVersion
         versionCode 1

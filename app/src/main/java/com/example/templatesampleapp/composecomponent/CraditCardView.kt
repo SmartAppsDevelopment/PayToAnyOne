@@ -8,6 +8,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,6 +31,8 @@ import kotlinx.coroutines.flow.stateIn
 class CraditCardView {
 
     val topTitle = MutableStateFlow("")
+    val allowToShowSideButton = MutableStateFlow(true)
+    val iconID = MutableStateFlow<Int?>(null)
     val acNo = MutableStateFlow("")
     val bankName = MutableStateFlow("")
 
@@ -47,7 +51,10 @@ class CraditCardView {
     }
 
     @Composable
-    fun CraditCardViewUi() {
+    fun CraditCardViewUi(isTextAllowed:Boolean=true) {
+
+        val isAllowToShowSideButton = allowToShowSideButton.collectAsState()
+        val iconsid=iconID.collectAsState()
         Card(shape = RoundedCornerShape(30.dp)) {
             Column(
                 modifier = Modifier.background(
@@ -66,27 +73,31 @@ class CraditCardView {
                         .wrapContentHeight()
                 ) {
                     val (bigCircle, edit, bottomContent, delete) = createRefs()
+
                     SpecialTypeCircleView(
-                        text = "BI",
+                        text = if(isTextAllowed) "BI" else null,
+                        drawaleID = iconsid.value,
                         modifier = Modifier
                             .constrainAs(bigCircle) {
                                 start.linkTo(parent.start)
                             })
-                    ShowEditIconButton(
-                        Modifier
-                            .constrainAs(edit) {
-                                end.linkTo(delete.start)
-                                top.linkTo(delete.top)
-                                bottom.linkTo(delete.bottom)
-                            })
-                    ShowDeleteIconButton(
-                        Modifier
-                            .size(28.dp)
-                            .constrainAs(delete) {
-                                end.linkTo(parent.end)
-                                top.linkTo(bigCircle.top)
-                                bottom.linkTo(bigCircle.bottom)
-                            })
+                    if(isAllowToShowSideButton.value) {
+                        ShowEditIconButton(
+                            Modifier
+                                .constrainAs(edit) {
+                                    end.linkTo(delete.start)
+                                    top.linkTo(delete.top)
+                                    bottom.linkTo(delete.bottom)
+                                })
+                        ShowDeleteIconButton(
+                            Modifier
+                                .size(28.dp)
+                                .constrainAs(delete) {
+                                    end.linkTo(parent.end)
+                                    top.linkTo(bigCircle.top)
+                                    bottom.linkTo(bigCircle.bottom)
+                                })
+                    }
                     Column(modifier = Modifier
                         .padding(top = 16.dp)
                         .constrainAs(bottomContent) {
@@ -133,7 +144,7 @@ class CraditCardView {
                 .clip(CircleShape)
                 .background(colorResource(id = R.color.black_trans))
         ) {
-            if (text != null)
+            if ((text != null) and (drawaleID == null))
                 Text(
                     text = title.value.splitNameToCapital(),
                     color = Color.White,
@@ -147,7 +158,7 @@ class CraditCardView {
                     painter = painterResource(id = drawaleID),
                     contentDescription = "",
                     modifier = Modifier
-                        .size(20.dp)
+                        .size(30.dp)
                         .clip(CircleShape)
                         .align(Alignment.Center)
                 )
