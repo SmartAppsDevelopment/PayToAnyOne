@@ -27,16 +27,16 @@ class PayNowViewModel @Inject constructor(
     /*
     TODO: check is both account and purpose of payment has been slected
      */
-    var isAccountSelected=false
-    set(value) {
-        field=value
-        verifyTransaction()
-    }
-    var isPurposeSelected=false
-    set(value) {
-        field=value
-        verifyTransaction()
-    }
+    var isAccountSelected = false
+        set(value) {
+            field = value
+            verifyTransaction()
+        }
+    var isPurposeSelected = false
+        set(value) {
+            field = value
+            verifyTransaction()
+        }
     var isContinueEnabled = MutableLiveData(false)
 
     var currentTransPurpose = MutableLiveData<PurposeListItem>()
@@ -58,20 +58,21 @@ class PayNowViewModel @Inject constructor(
     suspend fun getDataFromLocalDb() {
         uiUpdates.emit(ResponseState.Loading())
         repository.getAllAccountList().collect {
-            currentSelectAccount.value=(it[0])
+            currentSelectAccount.value = (it[0])
             uiUpdates.emit(ResponseState.Success(it))
         }
     }
+
     suspend fun getPurposeDataFromLocalDb() {
         uiUpdatesPurposeItem.emit(ResponseState.Loading())
-        repository.getAllTransPurposeList().collect {accountList->
-            currentTransPurpose.value= PurposeListItem(Constants.PURPOSE_HEADING)
-           isPurposeSelected = false
+        repository.getAllTransPurposeList().collect { accountList ->
+            currentTransPurpose.value = PurposeListItem(Constants.PURPOSE_HEADING)
+            isPurposeSelected = false
             uiUpdatesPurposeItem.emit(ResponseState.Success(accountList))
         }
     }
 
-    private fun verifyTransaction(){
-        isContinueEnabled.value=(isAccountSelected and isPurposeSelected)
+    private fun verifyTransaction() {
+        isContinueEnabled.value = (isAccountSelected and isPurposeSelected)
     }
 }

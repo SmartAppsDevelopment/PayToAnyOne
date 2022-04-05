@@ -26,4 +26,7 @@
     <color name="white_on_dark">#ffffff</color>
     <color name="bombay">#b7b9bc</color>
     <color name="malibu">#4ebeff</color>
+
+    <color name="gradient_start">#74a2ff</color>
+    <color name="gradient_end">#eb4dff</color>
 </resources>

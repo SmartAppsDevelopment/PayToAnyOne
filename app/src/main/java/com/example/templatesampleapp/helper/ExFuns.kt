@@ -5,6 +5,10 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.NavGraph
@@ -87,4 +91,12 @@ fun String.isAmountVerified():Int{
         amountCurrent
     else 0
 }
+
+//val firaSansFamily = FontFamily(
+//    Font(R.font.firasans_light, FontWeight.Light),
+//    Font(R.font.firasans_regular, FontWeight.Normal),
+//    Font(R.font.firasans_italic, FontWeight.Normal, FontStyle.Italic),
+//    Font(R.font.aspira_medium, FontWeight.Medium),
+//    Font(R.font.aspira_bold, FontWeight.Bold)
+//)
 
