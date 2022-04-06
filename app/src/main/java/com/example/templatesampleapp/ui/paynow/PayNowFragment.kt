@@ -1,9 +1,11 @@
 package com.example.templatesampleapp.ui.paynow
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,6 +14,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -22,11 +25,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.base.BaseFragmentCompose
 import com.example.templatesampleapp.composecomponent.CraditCardView
 import com.example.templatesampleapp.composecomponent.ExpandablePurposeAccountView
+import com.example.templatesampleapp.helper.safeNavigate
 import com.example.templatesampleapp.helper.showLog
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -204,10 +209,14 @@ class PayNowFragment : BaseFragmentCompose() {
     @Composable
     fun ShowMainUi() {
 
-        var isCollapsed by remember {
-            mutableStateOf(true)
+        val isPurposeViewCollapsed = viewModel.isPurposeViewCollapsed.collectAsState()
+        val isAccountViewCollapsed = viewModel.isAccountViewCollapsed.collectAsState()
+        var visibleCommonViews by remember {
+            mutableStateOf(false)
         }
-        val standPaddingBottom = 8.dp
+        val isContinueButtonActive = viewModel.isContinueEnabled.observeAsState()
+        visibleCommonViews = ((isPurposeViewCollapsed.value) and (isAccountViewCollapsed.value))
+
         val expandableView = ExpandablePurposeAccountView().apply {
             _viewModel = this@PayNowFragment.viewModel
         }
@@ -221,33 +230,58 @@ class PayNowFragment : BaseFragmentCompose() {
                         rememberScrollState()
                     ), verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text(
-                    text = getString(R.string.pay_from),
-                    fontSize = 14.sp,
-                    color = colorResource(id = R.color.santas_grey)
-                )
+                AnimatedVisibility(visible = visibleCommonViews) {
+                    Text(
+                        text = getString(R.string.pay_from),
+                        fontSize = 14.sp,
+                        color = colorResource(id = R.color.santas_grey)
+                    )
+                }
+
                 //  Spacer(modifier = Modifier.height(standPaddingBottom))
-                expandableView.ComponentAccountListItem()
+                AnimatedVisibility(visible = (isPurposeViewCollapsed.value)) {
+                    expandableView.ComponentAccountListItem()
+                }
                 //  Spacer(modifier = Modifier.height(standPaddingBottom))
-                Text(
-                    text = getString(R.string.pat_to),
-                    fontSize = 14.sp,
-                    color = colorResource(id = R.color.santas_grey)
-                )
+                AnimatedVisibility(visible = visibleCommonViews) {
+                    Text(
+                        text = getString(R.string.pat_to),
+                        fontSize = 14.sp,
+                        color = colorResource(id = R.color.santas_grey)
+                    )
+                }
                 //// Spacer(modifier = Modifier.size(6.dp))
-                CraditCardView().apply {
-                    val (icon, nam, accNo, bnknam) = payeesDetails.payesDetails!!
-                    iconID.value=icon.toInt()
-                    allowToShowSideButton.value=false
-                    topTitle.value = nam
-                    acNo.value = accNo
-                    bankName.value = bnknam
-                }.CraditCardViewUi(false)
-                  Spacer(modifier = Modifier.size(6.dp))
-                expandableView.ComponentPurposeListItem()
+                AnimatedVisibility(visible = visibleCommonViews) {
+
+                    CraditCardView().apply {
+                        val (icon, nam, accNo, bnknam) = payeesDetails.payesDetails!!
+                        iconID.value = icon.toInt()
+                        allowToShowSideButton.value = false
+                        topTitle.value = nam
+                        acNo.value = accNo
+                        bankName.value = bnknam
+                    }.CraditCardViewUi(false)
+                }
+                Spacer(modifier = Modifier.size(6.dp))
+                AnimatedVisibility(visible = (isAccountViewCollapsed.value)) {
+
+                    expandableView.ComponentPurposeListItem()
+                }
 
             }
             BottomButton({
+
+                Log.e("PayNowFragment", "ShowMainUi: "+viewModel.currentSelectAccount.value!! )
+                Log.e("PayNowFragment", "ShowMainUi: "+viewModel.currentTransPurpose.value!! )
+                if (isContinueButtonActive.value==true) {
+                    val dir = PayNowFragmentDirections.actionPayNowFragmentToAmountFragment(payeesDetails.payesDetails!!)
+                    Log.e("PayNowFragment", "ShowMainUi: "+viewModel.currentSelectAccount.value!! )
+                    Log.e("PayNowFragment", "ShowMainUi: "+viewModel.currentTransPurpose.value!! )
+                    dir.transAaccount = viewModel.currentSelectAccount.value
+                    dir.transPurpose = viewModel.currentTransPurpose.value
+                    findNavController().safeNavigate(dir)
+                }
+
 //                val dir =
 //                    PayeesDetailsFragmentDirections.actionPayeesDetailsFragmentToPayNowFragment()
 //                dir.payesDetails = payessDetails.accountDetails
@@ -259,6 +293,8 @@ class PayNowFragment : BaseFragmentCompose() {
 
     @Composable
     fun BottomButton(callOnClick: () -> Unit, modifier: Modifier = Modifier) {
+        val isContinueButtonActive = viewModel.isContinueEnabled.observeAsState()
+        Log.e("TaggeredComose", "BottomButton:=$isContinueButtonActive")
         Button(
             onClick = { callOnClick() },
             modifier = modifier
@@ -268,7 +304,7 @@ class PayNowFragment : BaseFragmentCompose() {
                 .clip(RoundedCornerShape(16.dp)),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = colorResource(
-                    id = R.color.lochmara
+                    id = if (isContinueButtonActive.value == true) R.color.lochmara else R.color.santas_grey
                 )
             )
         ) {

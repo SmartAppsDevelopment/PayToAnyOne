@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,17 +23,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.helper.*
 import com.example.templatesampleapp.model.Accounts
 import com.example.templatesampleapp.model.uimodel.PurposeListItem
 import com.example.templatesampleapp.ui.paynow.PayNowViewModel
 
-class ExpandablePurposeAccountView() {
+class ExpandablePurposeAccountView {
 
 
     var _viewModel: PayNowViewModel? = null
     val viewModel get() = _viewModel!!
+    private val minimumHeight=60.dp
+    private val maximumHeight=360.dp
 
     @Preview
     @Composable
@@ -42,7 +46,7 @@ class ExpandablePurposeAccountView() {
                 .padding(30.dp)
                 .wrapContentHeight()
 //                .heightIn(300.dp, 420.dp)
-//                .sizeIn(minHeight = 100.dp, maxHeight = 420.dp)
+//                .sizeIn(minHeight = 100.dp, maxHeight = maximumHeight)
                 .background(colorResource(id = R.color.gradient_start))
             ///.fillMaxSize()
         ) {
@@ -59,7 +63,7 @@ class ExpandablePurposeAccountView() {
 //        var isCollapsed by remember {
 //            mutableStateOf(isCollapsedAllow)
 //        }
-        val isCollapsed =  viewModel.isPurposeViewExpended.collectAsState()
+        val isCollapsed =  viewModel.isPurposeViewCollapsed.collectAsState()
 
         val listOfItems = remember {
             mutableStateListOf<PurposeListItem>()
@@ -77,7 +81,6 @@ class ExpandablePurposeAccountView() {
                     is ResponseState.Success -> {
                         val mappedList = it.data!!.map {
                             it!!
-
                         }.let { listOfAcc ->
                             listOfItems.addAll(listOfAcc)
                         }
@@ -85,25 +88,24 @@ class ExpandablePurposeAccountView() {
                     }
                 }
             }
-
 //        var isCollapsed by remember {
 //            mutableStateOf(true)
 //        }
-        var purposeTitle by remember {
-            mutableStateOf("Select Purpose")
-        }
-
+//        var purposeTitle by remember {
+//            mutableStateOf("Select Purpose")
+//        }
+        val purposeTitle =viewModel.currentTransPurpose.observeAsState(PurposeListItem("Purpose"))
         Card(
             modifier = with(Modifier) {
                 if (isCollapsed.value) {
                     sizeIn(
-                        minHeight = 60.dp,
-                        maxHeight = 420.dp
+                        minHeight = minimumHeight,
+                        maxHeight = maximumHeight
                     )
                         .fillMaxWidth()
                         .animateContentSize()
                 } else {
-                    sizeIn(minHeight = 60.dp, maxHeight = 420.dp)
+                    sizeIn(minHeight = minimumHeight, maxHeight = maximumHeight)
                         .fillMaxSize()
                         .animateContentSize()
                 }
@@ -112,7 +114,7 @@ class ExpandablePurposeAccountView() {
             backgroundColor = Color.White,
             onClick = {
                 val isViewCollapsed = !isCollapsed.value
-                viewModel.isPurposeViewExpended.value = isViewCollapsed
+                viewModel.isPurposeViewCollapsed.value = isViewCollapsed
             }
         ) {
 
@@ -152,7 +154,7 @@ class ExpandablePurposeAccountView() {
                             )
                         }
                         Text(
-                            purposeTitle,
+                            purposeTitle.value.name,
                             fontWeight = FontWeight.Bold,
                             fontStyle = getFontAspiraDem(),
                             modifier = Modifier.animateContentSize()
@@ -196,8 +198,9 @@ class ExpandablePurposeAccountView() {
                         items(listOfItems.size) {
                             listOfItems[it].PurposeListItemView {
                                 val isViewCollapsed = !isCollapsed.value
-                                viewModel.isPurposeViewExpended.value = isViewCollapsed
-                                purposeTitle = it
+                                viewModel.isPurposeViewCollapsed.value = isViewCollapsed
+//                                purposeTitle = PurposeListItem(it)
+//
                             }
                         }
                     }
@@ -214,12 +217,13 @@ class ExpandablePurposeAccountView() {
 //        var isCollapsed by remember {
 //            mutableStateOf(isCollapsedAllow)
 //        }
-        var isCollapsed =viewModel.isAccountViewExpended.collectAsState()
+        val isCollapsed =viewModel.isAccountViewCollapsed.collectAsState()
         val listOfItems = remember {
             mutableStateListOf<Accounts>()
         }
         viewModel.uiUpdates
-            .collectAsState().value.let {
+            .collectAsState()
+            .value.let {
                 when (it) {
                     is ResponseState.Error -> {
                     }
@@ -235,35 +239,31 @@ class ExpandablePurposeAccountView() {
                     }
                 }
             }
-
         var purposeTitle by remember {
             mutableStateOf("Select Purpose")
         }
         Card(
-            modifier = with(Modifier)
-            {
+            modifier = with(Modifier) {
                 if (isCollapsed.value) {
                     sizeIn(
-                        minHeight = 60.dp,
-                        maxHeight = 420.dp
+                        minHeight = minimumHeight,
+                        maxHeight = maximumHeight
                     )
                         .fillMaxWidth()
                         .animateContentSize()
                 } else {
-                    sizeIn(minHeight = 60.dp, maxHeight = 420.dp)
+                    sizeIn(minHeight = minimumHeight, maxHeight = maximumHeight)
                         .fillMaxSize()
                         .animateContentSize()
                 }
             },
             shape = RoundedCornerShape(16.dp),
             backgroundColor = Color.White,
-            onClick =
-            {
+            onClick = {
                 val isViewCollapsed = !isCollapsed.value
-                viewModel.isAccountViewExpended.value = isViewCollapsed
+                viewModel.isAccountViewCollapsed.value = isViewCollapsed
             }
-        )
-        {
+        ) {
 
             Column(verticalArrangement = Arrangement.Center) {
                 Row(
@@ -293,7 +293,7 @@ class ExpandablePurposeAccountView() {
                             .padding(start = 6.dp, end = 8.dp)
                             .clip(CircleShape)
                             .background(colorResource(id = R.color.mischka))
-                            .padding(8.dp)
+                            .padding(4.dp)
                             .size(28.dp)
                     )
 
@@ -352,7 +352,7 @@ class ExpandablePurposeAccountView() {
                             items(sampleItmsList.size) {
                                 sampleItmsList[it].AccountListItemView {
                                     val isViewCollapsed = !isCollapsed.value
-                                    viewModel.isAccountViewExpended.value = isViewCollapsed
+                                    viewModel.isAccountViewCollapsed.value = isViewCollapsed
                                     purposeTitle = it.name
                                 }
                             }
@@ -378,6 +378,8 @@ class ExpandablePurposeAccountView() {
                 .clickable(onClick = {
                     context.ShowToast(name)
                     click(name)
+                    viewModel.currentTransPurpose.value = PurposeListItem(name)
+                    viewModel.isPurposeSelected = true
                 })
         ) {
             Text(
@@ -391,6 +393,7 @@ class ExpandablePurposeAccountView() {
 
     @Composable
     fun Accounts.AccountListItemView(click: (Accounts) -> Unit) {
+
         val context = LocalContext.current
         Column(
             /* verticalAlignment = Alignment.CenterVertically,*/
@@ -403,6 +406,8 @@ class ExpandablePurposeAccountView() {
                 .clickable(onClick = {
                     context.ShowToast(name)
                     click(this)
+                    viewModel.currentSelectAccount.value = this
+                    viewModel.isAccountSelected = true
                 })
         ) {
             Text(
@@ -459,17 +464,4 @@ class ExpandablePurposeAccountView() {
     }
 
 
-//    fun GetHorizentalAlignment(): BiasAlignment.Horizontal {
-//        var horizontalBias by remember { mutableStateOf(-1f) }
-//        val alignment by animateHo(horizontalBias)
-//        return alignment
-//    }
-//
-//    @Composable
-//    private fun animateHorizontalAlignmentAsState(
-//        targetBiasValue: Float
-//    ): State<BiasAlignment.Horizontal> {
-//        val bias by animateFloatAsState(targetBiasValue)
-//        return derivedStateOf { BiasAlignment.Horizontal(bias) }
-//    }
 }

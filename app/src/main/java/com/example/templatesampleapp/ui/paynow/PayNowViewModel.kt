@@ -24,8 +24,8 @@ class PayNowViewModel @Inject constructor(
         private const val USER_ACCOUNT_PURPOSE = "USER_ACCOUNT_PURPOSE"
     }
 
-    var isPurposeViewExpended = MutableStateFlow(false)
-    var isAccountViewExpended = MutableStateFlow(false)
+    var isPurposeViewCollapsed = MutableStateFlow(true)
+    var isAccountViewCollapsed = MutableStateFlow(true)
     /*
     TODO: check is both account and purpose of payment has been slected
      */
@@ -76,5 +76,7 @@ class PayNowViewModel @Inject constructor(
 
     private fun verifyTransaction() {
         isContinueEnabled.value = (isAccountSelected and isPurposeSelected)
+        currentTransPurpose.value
+        currentSelectAccount.value
     }
 }

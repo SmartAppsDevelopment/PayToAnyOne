@@ -40,10 +40,10 @@
             android:id="@+id/tv_rs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_6sdp"
             android:fontFamily="@font/aspira_demi"
             android:gravity="end"
             android:text="@string/rs"
-            android:layout_marginEnd="@dimen/_6sdp"
             android:textColor="@color/santas_grey"
             android:textSize="@dimen/_12ssp"
             android:textStyle="normal"
@@ -113,10 +113,10 @@
 
         <EditText
             android:id="@+id/edt_text"
-android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
