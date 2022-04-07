@@ -28,7 +28,7 @@
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/icon_tab_bar_payment.xml" value="0.113" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/drawable/list_item_shape.xml" value="0.145" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/account_list_item.xml" value="0.1921875" />
-        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/accverify_cardview.xml" value="0.1921875" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/accverify_cardview.xml" value="0.10273972602739725" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/cradit_card_view.xml" value="0.1921875" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/expandable_acc_view.xml" value="0.178125" />
@@ -40,7 +40,7 @@
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/fragment_payees_detail.xml" value="0.178125" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/fragment_payess_detail.xml" value="0.2" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/fragment_reviewpayment.xml" value="0.22" />
-        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/pay_success_dialog.xml" value="0.178125" />
+        <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/pay_success_dialog.xml" value="0.21" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/payees_list_item.xml" value="0.178125" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/purpose_list_item.xml" value="0.178125" />
         <entry key="..\:/BilalProject/UblNewTask/PayToAnyOne/app/src/main/res/layout/top_toolbar.xml" value="0.1921875" />

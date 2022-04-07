@@ -2,20 +2,18 @@ package com.example.templatesampleapp.ui.frag_review
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.SurfaceView
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,19 +22,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
-import com.example.templatesampleapp.base.BaseFragment
 import com.example.templatesampleapp.base.BaseFragmentCompose
-import com.example.templatesampleapp.databinding.FragmentReviewpaymentBinding
-import com.example.templatesampleapp.helper.*
+import com.example.templatesampleapp.helper.getFontAspiraMed
+import com.example.templatesampleapp.helper.getFontAspiraReg
+import com.example.templatesampleapp.helper.showLog
+import com.example.templatesampleapp.helper.showToast
 import com.example.templatesampleapp.model.uimodel.DialogModel
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import com.example.templatesampleapp.ui.dialog.ComponentBottomSheetDialog
@@ -108,13 +105,17 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
 //            Modifier
 //                .padding(20.dp)
 //                .fillMaxSize()) {
-            PaymentMainUi()
-      ////  }
+        PaymentMainUi()
+        ////  }
     }
 
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     private fun PaymentMainUi() {
+        val reviewPaymentModel=viewModel.getPaymentModel(accountDetails.payees, accountDetails.transAaccount!!, accountDetails.amount!!){
+
+        }.accCardViewRef
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -139,6 +140,7 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
                         )
                         .wrapContentHeight()
                 ) {
+
                     Column(
                         modifier = Modifier
                             .background(Color.White)
@@ -148,7 +150,7 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
                     ) {
                         SpecialTypeCircleView(R.drawable.icon_tab_bar_accounts)
                         Text(
-                            text = "TAnia Khan ",
+                            text = reviewPaymentModel.payFromName,
                             fontSize = 18.sp,
                             color = colorResource(id = R.color.woodsmoke),
                             fontWeight = FontWeight.ExtraBold
@@ -159,10 +161,27 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
                             color = colorResource(id = R.color.oslo_grey)
                         )
                         Text(
-                            text = "12412312313 ",
+                            text = reviewPaymentModel.senderAcNo,
                             fontSize = 15.sp,
                             color = colorResource(id = R.color.woodsmoke)
                         )
+                    }
+
+                    //    LazyRow(modifier = Modifier.fillMaxWidth().offset(y = (-4).dp) ){
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .offset(y = (-4).dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        for (i in 0..16) {
+                            Box(
+                                modifier = Modifier
+                                    .size(8.dp)
+                                    .clip(CircleShape)
+                                    .background(Color.White)
+                            )
+                        }
                     }
 
                     Column(
@@ -176,22 +195,23 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
                             bgColorId = R.color.white
                         )
                         Text(
-                            text = "TAnia Khan ",
+                            text = reviewPaymentModel.payToName,
                             fontSize = 18.sp,
                             color = colorResource(id = R.color.white),
                             fontWeight = FontWeight.ExtraBold
                         )
-                        TextViewWithTitle(title = "Account Number", msg = "21312312312321")
-                        TextViewWithTitle(title = "Bank Name", msg = "Ubl Bank ")
-                        TextViewWithTitle(title = "Date", msg = "21312312312321")
+                        TextViewWithTitle(title = "Account Number", msg = reviewPaymentModel.receiverAcNo)
+                        TextViewWithTitle(title = "Bank Name", msg = reviewPaymentModel.receiverBankName)
+                        TextViewWithTitle(title = "Date", msg = reviewPaymentModel.date)
                     }
                 }
             }
 
-            Column(modifier = Modifier
-                .background(Color.White)
-                .align(Alignment.BottomCenter)
-                .padding(horizontal = 18.dp),
+            Column(
+                modifier = Modifier
+                    .background(Color.White)
+                    .align(Alignment.BottomCenter)
+                    .padding(horizontal = 18.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
@@ -211,7 +231,17 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
                         fontSize = 30.sp
                     )
                 }
-                BottomButton(callOnClick = { /*TODO*/ })
+                BottomButton(callOnClick = {
+                    ComponentBottomSheetDialog().apply {
+                       dialogModel = DialogModel(
+                            accountDetails.payees.name,
+                            accountDetails.transAaccount!!.name,
+                            accountDetails.amount ?: "0"
+                        ) { requireContext().showToast("Share Click") }.apply {
+                            accountNo = accountDetails.transAaccount?.accountNumber ?: ""
+                        }
+                    }.show(requireActivity().supportFragmentManager, "SdkReviewPayment")
+                })
             }
         }
     }

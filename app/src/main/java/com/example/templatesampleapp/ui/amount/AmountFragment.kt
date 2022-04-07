@@ -47,7 +47,8 @@ class AmountFragment : BaseFragmentCompose(){
         savedInstanceState: Bundle?
     ): View = ComposeView(requireContext()).apply {
         setContent {
-            ShowMainUi(userName = "BillaTiger")
+            val name=transData.transAaccount?.name ?: "No Name"
+            ShowMainUi(userName = name)
         }
     }
 

@@ -9,219 +9,220 @@
             name="model"
             type="com.example.templatesampleapp.model.uimodel.DialogModel" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:background="@android:color/transparent"
-    android:layout_height="wrap_content">
-    <com.google.android.material.card.MaterialCardView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        app:cardCornerRadius="@dimen/_20sdp">
+        android:background="@android:color/transparent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_20sdp">
 
-            <ImageView
-                android:id="@+id/iv_cross"
-                android:padding="@dimen/_3sdp"
-                android:layout_width="@dimen/_18ssp"
-                android:layout_height="@dimen/_18ssp"
-                android:layout_margin="@dimen/_20ssp"
-                android:background="@drawable/cross_dialog"
-                android:src="@drawable/ic_baseline_clear_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white" />
-
-            <ImageView
-                android:id="@+id/iv_top_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_credit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_cross" />
-
-            <TextView
-                android:id="@+id/tv_hint1"
-                android:layout_width="@dimen/_179sdp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:fontFamily="@font/aspira_demi"
-                android:gravity="center_horizontal"
-                android:text="@string/your_payment_has_been_processed"
-                android:textColor="@color/woodsmoke"
-                android:textSize="@dimen/_17ssp"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_top_icon" />
-
-            <TextView
-                android:id="@+id/tv_hint2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:fontFamily="@font/aspira_demi"
-                android:gravity="center"
-                android:text="@string/amount_sent"
-                android:textColor="@color/bombay"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_hint1" />
-
-            <TextView
-                android:id="@+id/hint3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aspira_bold"
-                android:gravity="center_horizontal"
-                android:text="@{model.amount}"
-                android:textColor="@color/woodsmoke"
-                android:textSize="@dimen/_23ssp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_hint2"
-                tools:text="2,000.00" />
-
-            <TextView
-                android:id="@+id/hint4"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aspira_medium"
-                android:gravity="center_horizontal"
-                android:text="@string/this_message_can_be_described_in_detail"
-                android:textColor="@color/shuttle_grey"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint3" />
-
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6ssp"
-                android:fontFamily="@font/aspira_demi"
-                android:gravity="center_horizontal"
-                android:text="@string/_12_november_2020"
-                android:textColor="@color/bombay"
-                android:textSize="@dimen/_10ssp"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint4" />
-
-            <TextView
-                android:id="@+id/tv_paidtohint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6ssp"
-                android:fontFamily="@font/aspira_demi"
-                android:gravity="center_horizontal"
-                android:text="@string/paid_to"
-                android:textColor="@color/bombay"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_date" />
-
-            <TextView
-                android:id="@+id/tv_paidto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aspira_demi"
-                android:gravity="center_horizontal"
-                android:text="@{model.senderName}"
-                android:textColor="@color/woodsmoke"
-                android:textSize="@dimen/_17ssp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_paidtohint"
-                tools:text="Nida Ali" />
-
-            <TextView
-                android:id="@+id/tv_acno"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:fontFamily="@font/aspira_medium"
-                android:gravity="center_horizontal"
-                android:text="@{model.accountNo}"
-                tools:text="@string/account_number"
-                android:textColor="@color/bombay"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_paidto" />
-
-            <TextView
-                android:id="@+id/tv_paidto2"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6ssp"
-                android:fontFamily="@font/aspira_demi"
-                android:gravity="center_horizontal"
-                android:text="@string/paid_to"
-                android:textColor="@color/bombay"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_acno" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_paidto21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aspira_demi"
-                android:gravity="center_horizontal"
-                android:text="@{model.receiverName}"
-                android:textColor="@color/woodsmoke"
-                android:textSize="@dimen/_17ssp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_paidto2"
-                tools:text="Nida Ali" />
+                <ImageView
+                    android:id="@+id/iv_cross"
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:layout_margin="@dimen/_20ssp"
+                    android:background="@drawable/cross_dialog"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_baseline_clear_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_edit"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="wrap_content"
-                android:fontFamily="@font/aspira_demi"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_9sdp"
-                android:layout_marginBottom="@dimen/_17sdp"
-                android:layout_marginHorizontal="@dimen/_6sdp"
-                android:clickable="true"
-                android:focusable="true"
-                android:onClick="@{()->model.callBackShare.invoke()}"
-                android:text="@string/share"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/mischka"
-                app:cornerRadius="@dimen/_30sdp"
-                app:icon="@drawable/icon_add_share"
-                app:iconGravity="end"
-                app:iconTintMode="multiply"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_paidto21"
-                app:rippleColor="@color/lochmara" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <ImageView
+                    android:id="@+id/iv_top_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_credit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_cross" />
 
-</LinearLayout>
+                <TextView
+                    android:id="@+id/tv_hint1"
+                    android:layout_width="@dimen/_179sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/aspira_demi"
+                    android:gravity="center_horizontal"
+                    android:text="@string/your_payment_has_been_processed"
+                    android:textColor="@color/woodsmoke"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_top_icon" />
+
+                <TextView
+                    android:id="@+id/tv_hint2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:fontFamily="@font/aspira_demi"
+                    android:gravity="center"
+                    android:text="@string/amount_sent"
+                    android:textColor="@color/bombay"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hint1" />
+
+                <TextView
+                    android:id="@+id/hint3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aspira_bold"
+                    android:gravity="center_horizontal"
+                    android:text="@{model.amount}"
+                    android:textColor="@color/woodsmoke"
+                    android:textSize="@dimen/_23ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hint2"
+                    tools:text="2,000.00" />
+
+                <TextView
+                    android:id="@+id/hint4"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aspira_medium"
+                    android:gravity="center_horizontal"
+                    android:text="@string/this_message_can_be_described_in_detail"
+                    android:textColor="@color/shuttle_grey"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hint3" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6ssp"
+                    android:fontFamily="@font/aspira_demi"
+                    android:gravity="center_horizontal"
+                    android:text="@string/_12_november_2020"
+                    android:textColor="@color/bombay"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hint4" />
+
+                <TextView
+                    android:id="@+id/tv_paidtohint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6ssp"
+                    android:fontFamily="@font/aspira_demi"
+                    android:gravity="center_horizontal"
+                    android:text="@string/paid_to"
+                    android:textColor="@color/bombay"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_date" />
+
+                <TextView
+                    android:id="@+id/tv_paidto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aspira_demi"
+                    android:gravity="center_horizontal"
+                    android:text="@{model.senderName}"
+                    android:textColor="@color/woodsmoke"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_paidtohint"
+                    tools:text="Nida Ali" />
+
+                <TextView
+                    android:id="@+id/tv_acno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:fontFamily="@font/aspira_medium"
+                    android:gravity="center_horizontal"
+                    android:text="@{model.accountNo}"
+                    android:textColor="@color/bombay"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_paidto"
+                    tools:text="@string/account_number" />
+
+                <TextView
+                    android:id="@+id/tv_paidto2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6ssp"
+                    android:fontFamily="@font/aspira_demi"
+                    android:gravity="center_horizontal"
+                    android:text="@string/paid_to"
+                    android:textColor="@color/bombay"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_acno" />
+
+                <TextView
+                    android:id="@+id/tv_paidto21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aspira_demi"
+                    android:gravity="center_horizontal"
+                    android:text="@{model.receiverName}"
+                    android:textColor="@color/woodsmoke"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_paidto2"
+                    tools:text="Nida Ali" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_edit"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:layout_marginBottom="@dimen/_17sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/aspira_demi"
+                    android:onClick="@{()->model.callBackShare.invoke()}"
+                    android:text="@string/share"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/mischka"
+                    app:cornerRadius="@dimen/_30sdp"
+                    app:icon="@drawable/icon_add_share"
+                    app:iconGravity="end"
+                    app:iconTintMode="multiply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_paidto21"
+                    app:rippleColor="@color/lochmara" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 </layout>
