@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
@@ -46,21 +49,20 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
     val viewModel by viewModels<ReviewPaymentViewModel>()
     private val accountDetails by navArgs<ReviewPaymentFragmentArgs>()
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = ComposeView(requireContext()).apply {
         setContent {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    //  .verticalScroll(rememberScrollState())
-                    .background(colorResource(id = R.color.concrete))
-            ) {
+//            Column(
+//                Modifier
+//                    .fillMaxSize()
+//
+//                    .background(colorResource(id = R.color.concrete))
+//            ) {
                 PaymentMainUi()
-            }
+         ///   }
         }
     }
 
@@ -115,16 +117,20 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
         val reviewPaymentModel=viewModel.getPaymentModel(accountDetails.payees, accountDetails.transAaccount!!, accountDetails.amount!!){
 
         }.accCardViewRef
-
-        Box(
+        ConstraintLayout(
             modifier = Modifier
                 .fillMaxSize()
-
-
+                .verticalScroll(rememberScrollState())
         ) {
+            val (cardView,bottomAmountView)=createRefs()
             Card(/*onClick = { *//*TODO*//* },*/ shape = RoundedCornerShape(40.dp),
                 modifier = Modifier
-                    .align(Alignment.TopCenter)
+                    .constrainAs(cardView){
+                        top.linkTo(parent.top)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                        bottom.linkTo(bottomAmountView.top)
+                    }
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
             ) {
@@ -210,7 +216,12 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
             Column(
                 modifier = Modifier
                     .background(Color.White)
-                    .align(Alignment.BottomCenter)
+                    .constrainAs(bottomAmountView){
+                        top.linkTo(cardView.bottom)
+                        bottom.linkTo(parent.bottom)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    }
                     .padding(horizontal = 18.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -312,6 +323,5 @@ class ReviewPaymentFragment : BaseFragmentCompose() {
             Text(text = "Pay Now", color = Color.White)
         }
     }
-
 
 }

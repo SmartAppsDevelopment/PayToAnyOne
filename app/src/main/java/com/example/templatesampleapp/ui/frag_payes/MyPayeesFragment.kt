@@ -1,8 +1,6 @@
 package com.example.templatesampleapp.ui.frag_payes
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,17 +31,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import com.example.templatesampleapp.R
-import com.example.templatesampleapp.adapter.PayeesItemsAdapter
-import com.example.templatesampleapp.base.BaseFragment
 import com.example.templatesampleapp.base.BaseFragmentCompose
-import com.example.templatesampleapp.databinding.FragmentMyPayeesBinding
 import com.example.templatesampleapp.helper.*
 import com.example.templatesampleapp.model.Payees
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 

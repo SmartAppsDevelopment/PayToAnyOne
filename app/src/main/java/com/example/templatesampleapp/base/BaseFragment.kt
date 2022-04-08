@@ -32,13 +32,13 @@ abstract class BaseFragment<T : ViewDataBinding>(private var layoutId: Int) : Fr
     override fun onResume() {
         super.onResume()
         with((activity as MainActivity).binding) {
-            topBarMain.toolbar = getToolbar().apply {
-                if (hideSearchIcon) {
-                   topBarMain.ivSearchIcon.visibility=View.INVISIBLE
-                }else{
-                    topBarMain.ivSearchIcon.visibility=View.VISIBLE
-                }
-            }
+//            topBarMain.toolbar = getToolbar().apply {
+//                if (hideSearchIcon) {
+//                   topBarMain.ivSearchIcon.visibility=View.INVISIBLE
+//                }else{
+//                    topBarMain.ivSearchIcon.visibility=View.VISIBLE
+//                }
+//            }
         }
 
     }

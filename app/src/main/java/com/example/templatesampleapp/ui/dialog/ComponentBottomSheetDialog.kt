@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.animation.AnimatedContentScope.SlideDirection.Companion.End
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,11 +30,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.templatesampleapp.R
-import com.example.templatesampleapp.databinding.PaySuccessDialogBinding
 import com.example.templatesampleapp.model.uimodel.DialogModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog

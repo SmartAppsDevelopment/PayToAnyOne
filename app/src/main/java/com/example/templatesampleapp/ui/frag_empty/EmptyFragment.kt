@@ -1,24 +1,39 @@
 package com.example.templatesampleapp.ui.frag_empty
 
-import com.example.templatesampleapp.R
-import com.example.templatesampleapp.base.BaseFragment
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.compose.material.Text
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.unit.sp
+import com.example.templatesampleapp.base.BaseFragmentCompose
 import com.example.templatesampleapp.base.BaseViewModel
-import com.example.templatesampleapp.databinding.FragmentMyPayeesBinding
 import com.example.templatesampleapp.helper.showLog
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class EmptyFragment() :
-    BaseFragment<FragmentMyPayeesBinding>(R.layout.fragment_empty) {
+class EmptyFragment() : BaseFragmentCompose() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = ComposeView(requireContext()).apply {
+        setContent {
+            Text(text = "Empty Fragment", fontSize = 22.sp)
+        }
+    }
+
     override fun getToolbar() = ToolBarModel("Sample Frag", searchClick = {
         showLog("1 Search Click")
     }, userImgClick = {
         showLog("1 Img CLick")
     })
 
-    override val viewModel: BaseViewModel
+    val viewModel: BaseViewModel
         get() = TODO("Not yet implemented")
 
 

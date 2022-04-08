@@ -8,7 +8,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,13 +27,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.templatesampleapp.R
-import com.example.templatesampleapp.base.BaseFragment
 import com.example.templatesampleapp.base.BaseFragmentCompose
 import com.example.templatesampleapp.composecomponent.CraditCardView
-import com.example.templatesampleapp.databinding.FragmentPayessDetailBinding
 import com.example.templatesampleapp.helper.safeNavigate
 import com.example.templatesampleapp.helper.showLog
-import com.example.templatesampleapp.helper.toCardViewRef
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import dagger.hilt.android.AndroidEntryPoint
 

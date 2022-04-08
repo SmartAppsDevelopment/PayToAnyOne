@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.example.templatesampleapp.composecomponent.TopToolBar
 import com.example.templatesampleapp.model.uimodel.ToolBarModel
 import com.example.templatesampleapp.ui.activmain.MainActivity
 
@@ -36,20 +37,16 @@ abstract class BaseFragmentCompose() : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        with((activity as MainActivity).binding) {
-            topBarMain.toolbar = getToolbar().apply {
-                if (hideSearchIcon) {
-                   topBarMain.ivSearchIcon.visibility=View.INVISIBLE
-                }else{
-                    topBarMain.ivSearchIcon.visibility=View.VISIBLE
-                }
-            }
+        with((activity as MainActivity)) {
+            implCompose(getToolbar().title)
         }
-
+//            topBarMain.toolbar = getToolbar().apply {
+//                if (hideSearchIcon) {
+//                   topBarMain.ivSearchIcon.visibility=View.INVISIBLE
+//                }else{
+//                    topBarMain.ivSearchIcon.visibility=View.VISIBLE
+//                }
+//            }
     }
-
     abstract fun getToolbar(): ToolBarModel
-
-
-
 }

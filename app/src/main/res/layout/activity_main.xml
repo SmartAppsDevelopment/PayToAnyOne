@@ -17,12 +17,20 @@
         tools:context=".ui.activmain.MainActivity">
 
 
-        <include
+        <androidx.compose.ui.platform.ComposeView
+            android:id="@+id/top_bar_main_comp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+   <!--     <include
             android:id="@+id/top_bar_main"
             layout="@layout/top_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
 
 
@@ -34,7 +42,7 @@
 
                app:layout_constraintLeft_toLeftOf="@id/start_guide"
                 app:layout_constraintRight_toRightOf="@id/end_guide"
-                app:layout_constraintTop_toBottomOf="@id/top_bar_main"
+                app:layout_constraintTop_toBottomOf="@id/top_bar_main_comp"
                 app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph" />

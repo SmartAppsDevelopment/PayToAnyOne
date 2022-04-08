@@ -11,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.base.BaseActivity
+import com.example.templatesampleapp.composecomponent.TopToolBar
 import com.example.templatesampleapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override val viewModel by viewModels<MainViewModel>()
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val navHostFragment =
@@ -37,15 +39,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
             }
         }
-
         binding.apply {
             bottomNavigation.setupWithNavController(navController)
-            topBarMain.ivBackIcon.setOnClickListener {
-                onBackPressed()
-            }
+//            topBarMain.ivBackIcon.setOnClickListener {
+//                onBackPressed()
+//            }
         }
 
     }
+
+    fun implCompose(topTitle:String){
+        binding.apply {
+            topBarMainComp.setContent {
+                TopToolBar().ToolbarUi(topTitle = topTitle) {
+                    onBackPressed()
+                }
+            }
+        }
+    }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
